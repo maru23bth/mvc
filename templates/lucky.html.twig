@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Lucky{% endblock %}
+
+{% block main %}
+
+    <h1>Your lucky number is {{ number }}</h1>
+
+    <img src="{{ asset('img/fortune_cookie_broken.jpg') }}" width="100%"  alt="Bild på Lyckokaka ">
+
+{% endblock %}
+
+{% block footer %}{{ saying }}{% endblock %}

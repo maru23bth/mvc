@@ -1,0 +1,89 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+a, a:visited, a:hover {
+    color: black;
+}
+
+/* Placement */
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    width: min(65ch, 100% - 2rem);
+    margin-inline: auto;
+}
+
+body>header,
+body>footer {
+    flex: 0 0 auto;
+}
+
+body>footer {
+    padding-inline: calc((100% - min(65ch, 100% - 2rem)) / 2);
+    padding-block: 2rem;
+}
+
+/* Typografy */
+
+body {
+    font-family: system-ui, sans-serif;
+    font-size: clamp(16px, 3vw, 20px);
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+    vertical-align: middle;
+    height: auto;
+}
+
+/* Navbar */
+header nav {
+    background-color: #333;
+}
+nav ul {
+    padding-inline: calc((100% - min(80ch, 100% - 2rem)) / 2);
+    list-style-type: none;
+    margin: 0;
+    padding-block: 0;
+    overflow: hidden;
+}
+  
+nav li {
+    float: left;
+  }
+  
+nav li a, nav li a:visited {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+nav li a:hover {
+    background-color: #111;
+  }
+
+nav .active {
+    background-color: #04AA6D;
+  }
