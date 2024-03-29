@@ -3,13 +3,13 @@
 ![Symfony logo](https://symfony.com/logos/symfony_black_02.svg)
 
 
-Clone the course repo (this repo).
+För att klona repot.
 
 ```
 dbwebb clone mvc
 ```
 
-Run your app
+För att komma igång med att köra webbplatsen.
 ```
 # You are in the report/ directory
 php -S localhost:8888 -t public
