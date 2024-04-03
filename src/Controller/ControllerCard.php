@@ -49,8 +49,8 @@ class ControllerCard extends AbstractController
     public function shuffle(Request $request, SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
-        $session->set('deck', $deck);
         $deck->shuffle();
+        $session->set('deck', $deck);
 
         return $this->render('card/deck.html.twig', ['deck' => $deck->cards]);
     }

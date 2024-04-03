@@ -3,20 +3,44 @@
 {% block title %}Api{% endblock %}
 
 {% block main %}
-    <h1>Api routes</h1>
+<h1>Api routes</h1>
 
-    <p>Sammanställning av alla JSON routes som webbplatsen erbjuder</p>
+<p>Sammanställning av alla JSON routes som webbplatsen erbjuder</p>
 
-    <ul>
-        <li>
-        <h2>/api/quote</h2>
+<h2>/api/quote</h2>
+<ul>
+    <li>
+        <h3>/api/quote</h3>
         <p>
             JSON svar som innehåller dagens citat.<br>
             Växla slumpmässigt mellan (minst) tre olika citat som du själv hittat på eller lånat av någon.<br>
             JSON svaret skall även innehålla dagens datum och en tidsstämpel för när svaret genererades.<br>
         </p>
     </li>
-    </ul>
+</ul>
+
+
+<h2>/api/deck</h2>
+<ul>
+    <li>
+        <h3>GET /api/deck</h3>
+        <p>
+            Returnerar en JSON struktur med hela kortleken sorterad per färg och värde.
+        </p>
+    </li>
+    <li>
+        <h3>POST /api/deck/shuffle</h3>
+        <p>
+            Blandar kortleken och därefter returnerar en JSON struktur med kortleken. Den blandade kortleken sparas i sessionen.
+        </p>
+    </li>
+    <li>
+        <h3>POST /api/deck/deal/:players/:cards</h3>
+        <p>
+            Delar ut ett antal :cards från kortleken till ett antal :players och visar upp de korten som respektive spelare har fått i en JSON struktur. Visa även antalet kort som är kvar i kortleken.
+        </p>
+    </li>
+
+</ul>
 
 {% endblock %}
-
