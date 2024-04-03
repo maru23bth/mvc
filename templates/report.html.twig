@@ -39,7 +39,45 @@
 
 <article id="kmom02">
     <h2>Kmom02</h2>
-    <p></p>
+
+    <ul>
+        <li><b>Arv</b>
+            Ärver egenskaper från en föräldrarklass.
+            Dvs. de variabler (egenskaper) och metoder som skapas i den nya klassen kan addera funktion eller skriva över funktioner från föräldrarklassen.<br>
+            Föräldrarklssens variabler och metoder finns också i den nya klassen.
+        </li>
+        <li><b>Komposition</b>
+            Komposition är när en klass innehåller en eller flera andra klasser.
+        </li>
+        <li><b>Interface</b>
+            Objektgränssnitt anger vilka metoder en klass måste implementera.<br>
+            Men utan att definiera hur dessa metoder ska implementeras.
+        </li>
+        <li><b>Trait</b>
+            Mekanism för kodåteranvändning eftersom PHP bara kan ärva från en klass.<br>
+            Definieras en trait "class" kan denna kod "importeras" och därmed användas i flera klasser.
+        </li>
+    </ul>
+    
+    <p>
+        Jag började med att göra Card klassen, som var ganska självförklarande.<br>
+        Därefter började jag med DeckOfCards...
+        när jag senare skulle börja med CardHand kom jag underfund med att en "hand" och kortlek delar grundegenskapen att hålla kort.<br>
+        Och jag strukturerade därför om och skapade CardCollection som har som uppgift att hålla 0 eller flera Card.<br>
+        Därmed fick CardHand och DeckOfCards ärva CardCollection klassen.<br>
+        Den konstruktionen är jag just nu nöjd med...<br>
+        Jag har fokuserat på funktionen, så gränssnittet finns det mycket att jobba med.
+    </p>
+
+    <p>
+        Jag gillar strukturen i Symfony, det jag kanske skulle önska är lite mer folder -> route stuktur.<br>
+        Det kanske går att göra, men just nu kan vilket som hellst route dölja sig i vilken controller som helst.<br>
+    </p>
+
+    <p>
+        TIL denna vecka blev arbetet med klasser i PHP och de magiska metoderna __toString, __get m.m.<br>
+        Det blir lite rörigt för mig när man rör sig mellan js, python och php... jag saknar t.ex. get för specika variabler och __compare för att jämföra två klass instanser.<br>        
+    </p>
 </article>
 
 
