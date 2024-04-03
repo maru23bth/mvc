@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block main %}
+<h1>Card</h1>
+
+<nav>
+    <ul>
+        <li><a href="{{ path('card/deck') }}">Deck</a></li>
+        <li><a href="{{ path('card/deck/shuffle') }}">Shuffle</a></li>
+        <li><a href="{{ path('card/deck/draw') }}">Draw</a></li>
+        <li><a href="{{ path('card/deck/draw', {number: 5}) }}">Draw 5</a></li>
+        <li><a href="{{ path('card/deck/deal', {players: 4, cards: 5}) }}">Deal 4 hands of 5 cards</a></li>
+    </ul>
+</nav>   
+
+{% endblock %}
+
+{% block footer %}Footer{% endblock %}

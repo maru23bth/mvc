@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Card{% endblock %}
+
+{% block main %}
+<h1>Card deck ({{ deck|length}} cards)</h1>
+
+<ul class="cards">
+{% for key, card in deck %}
+    <li>
+        <!--b>{{ key }}</b>:-->
+        <span>{{ card.showCard()|raw }}</span>
+        {{ card.number }} of {{ card.suit }} ( {{ card.color }} )
+    </li>
+{% endfor %}        
+</ul>
+
+
+
+{% endblock %}
+
+{% block footer %}Footer{% endblock %}

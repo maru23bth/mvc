@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-class ApiControllerJson extends AbstractController
+class ControllerApiJson extends AbstractController
 {
     #[Route("/api", name: "api")]
     public function api(): Response

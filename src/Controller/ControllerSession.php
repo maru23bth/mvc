@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class SessionController extends AbstractController
+class ControllerSession extends AbstractController
 {
     #[Route("/session", name: "session")]
     public function session(Request $request, SessionInterface $session): Response

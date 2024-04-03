@@ -14,7 +14,9 @@ body {
     margin: 0;
 }
 
-a, a:visited, a:hover {
+a,
+a:visited,
+a:hover {
     color: black;
 }
 
@@ -59,31 +61,41 @@ img {
 header nav {
     background-color: #333;
 }
-nav ul {
+
+header nav ul {
     padding-inline: calc((100% - min(80ch, 100% - 2rem)) / 2);
     list-style-type: none;
     margin: 0;
     padding-block: 0;
     overflow: hidden;
 }
-  
-nav li {
+
+header nav li {
     float: left;
-  }
-  
-nav li a, nav li a:visited {
+}
+
+header nav li a,
+header nav li a:visited {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-nav li a:hover {
-    background-color: #111;
-  }
+}
 
-nav .active {
+/* Change the link color to #111 (black) on hover */
+header nav li a:hover {
+    background-color: #111;
+}
+
+header nav .active {
     background-color: #04AA6D;
-  }
+}
+
+/* Cards */
+ul.cards {
+    list-style-type: none;
+}
+ul.cards li span {
+    font-size: 10vw;
+}
