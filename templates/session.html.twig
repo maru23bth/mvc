@@ -1,0 +1,33 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Session{% endblock %}
+
+{% block main %}
+    <h1>Session</h1>
+
+    {# read and display just one flash message type #}
+    {% for message in app.flashes('notice') %}
+        <p class="flash-notice">
+            {{ message }}
+        </p>
+    {% endfor %}
+
+    {% if app.session is empty %}
+        <p>
+            Session is empty
+        </p>
+    {% else %}
+        <ul>
+            {# read and display everything in session #}
+            {% for key, value in app.session %}
+                <li>
+                    <b>{{ key }}</b>:
+                    {{ value }}
+                </li>
+            {% endfor %}        
+        </ul>
+    {% endif %}
+
+{% endblock %}
+
+

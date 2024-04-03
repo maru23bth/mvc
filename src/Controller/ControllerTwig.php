@@ -39,10 +39,12 @@ class ControllerTwig extends AbstractController
             "Help! I'm being held prisoner in a fortune cookie factory.",
         ];
 
-        return $this->render('lucky.html.twig',
-        [
+        return $this->render(
+            'lucky.html.twig',
+            [
             "number" => $number,
             "saying" => $fortuneCookieSayings[array_rand($fortuneCookieSayings)]
-        ]);
+        ]
+        );
     }
 }
