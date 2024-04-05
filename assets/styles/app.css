@@ -85,6 +85,7 @@ header nav li a:visited {
 
 /* Change the link color to #111 (black) on hover */
 header nav li a:hover {
+    color: #fff;
     background-color: #111;
 }
 
