@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Dokumentations av kortspel{% endblock %}
+
+{% block main %}
+<h1>Dokumentations av kortspel</h1>
+
+
+<h2>Flödesschema</h2>
+<img src="{{ asset('img/game/flowchart.png') }}" alt="Flödesschema">
+
+<h2>Psuedokod </h2>
+<img src="{{ asset('img/game/pseudocode.png') }}" alt="Psuedokod">
+
+<h2>Klasser</h2>
+<ul>
+    <li><h3>Game class</h3>
+        Huvudklass för spelet.
+        Innehåller spellogik
+        <ul>
+            <li><h3>DeckOfCards class</h3>
+                Innehåller spelkorten som finns i leken.
+                <ul>
+                    <li>
+                        <h3>Card class</h3>
+                        Representerar ett spelkort.
+                    </li>
+                </ul>
+            </li>
+            <li><h3>CardHand class</h3>
+                Innehåller korthanden som spelaren resp. banken har.
+                <ul>
+                    <li>
+                        <h3>Card class</h3>
+                        Representerar ett spelkort.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}
+
+{% block footer %}Footer{% endblock %}

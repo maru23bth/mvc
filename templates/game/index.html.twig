@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Kortspel{% endblock %}
+
+{% block main %}
+<h1>Kortspel</h1>
+
+<p>
+    Spelets idé är att med två eller flera kort försöka uppnå det sammanlagda värdet 21,
+    eller komma så nära som möjligt utan att överskrida 21.<br>
+    Essen är värda valfritt 1 eller 14.
+</p>
+
+<nav>
+    <ul>
+        <li><a href="{{ path('game/play') }}">Start spel</a></li>
+        <li><a href="{{ path('game/doc') }}">Dokumentation</a></li>
+    </ul>
+</nav>   
+{% endblock %}
+
+{% block footer %}Footer{% endblock %}

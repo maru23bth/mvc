@@ -17,7 +17,7 @@ class ControllerSession extends AbstractController
         return $this->render('session.html.twig');
     }
 
-    #[Route("session/delete", name: "session_delete")]
+    #[Route("/session/delete", name: "session_delete")]
     public function sessionDelete(SessionInterface $session): Response
     {
         $session->clear();

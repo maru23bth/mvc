@@ -6,7 +6,7 @@ use App\Card\Card;
 use App\Card\CardCollection;
 
 class CardHand extends CardCollection
-{
+{ 
     public function add(Card $card): void
     {
         $this->cards[] = $card;

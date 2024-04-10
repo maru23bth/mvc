@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Spela kortspel{% endblock %}
+
+{% block main %}
+<h1>Spela kortspel</h1>
+
+{# read and display just one flash message type #}
+{% for message in app.flashes('notice') %}
+<p class="flash-notice">
+    {{ message }}
+</p>
+{% endfor %}
+
+{% if winner %}
+<h2>Winnaren är {{ winner }}</h2>
+<form method="post">
+    <button type="submit" name="play" value="reset">Reset</button>
+</form>
+{% else %}
+<form method="post">
+    <button type="submit" name="play" value="draw">Ta ytterligare ett kort</button>
+    <button type="submit" name="play" value="stop">Stanna</button>
+    <button type="submit" name="play" value="reset">Reset</button>
+</form>
+
+{% endif %}
+
+
+
+<div style="display: flex;justify-content: space-evenly;">
+    <div style="display: flex;flex-direction: column;">
+        <h2>Spelare</h2>
+        <ul class="cards" style="flex: 1 0 auto;">
+            {% for card in game.player.cards %}
+            <li>
+                <span>{{ card.showCard()|raw }}</span>
+                {{ card.number }} of {{ card.suit }}
+            </li>
+            {% endfor %}
+        </ul>
+        <h3>Värde: {{ game.getHandValues(game.player)|join(' eller ')}}.</h3>
+    </div>
+
+    <div style="display: flex;flex-direction: column;">
+        <h2>Bank</h2>
+        <ul class="cards" style="flex: 1 0 auto;">
+            {% for card in game.bank.cards %}
+            <li>
+                <span>{{ card.showCard()|raw }}</span>
+                {{ card.number }} of {{ card.suit }}
+            </li>
+            {% endfor %}
+        </ul>
+        <h3>Värde: {{ game.getHandValues(game.bank)|join(' eller ')}}</h3>
+    </div>
+</div>
+
+
+<pre>
+    {{ dump(game) }}
+</pre>
+
+{% endblock %}
+
+{% block footer %}Footer{% endblock %}

@@ -82,7 +82,22 @@ class Card
         return $result;
     }
 
-    public function __toString()
+    public function getValue(): int {
+        switch ($this->number) {
+            case 'Jack':
+                return 11;
+            case 'Queen':
+                return 12;
+            case 'King':
+                return 13;
+            case 'Ace':
+                return 14;
+            default:
+                return intval($this->number);
+        }
+    }
+
+    public function __toString(): string
     {
         return $this->number . " of " . $this->suit;
     }

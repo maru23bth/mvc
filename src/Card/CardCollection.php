@@ -12,7 +12,7 @@ class CardCollection
     /**
      * @var \App\Card\Card[]
      */
-    protected array $cards;
+    protected array $cards = [];
 
     /**
      * Shuffle cards
