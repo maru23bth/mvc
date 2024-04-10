@@ -10,7 +10,6 @@ use App\Card\Card;
 class CardCollection
 {
     /**
-     * 
      * @var \App\Card\Card[]
      */
     protected array $cards;
@@ -77,7 +76,6 @@ class CardCollection
     {
         switch ($name) {
             case 'cards':
-                echo "__get(cards)";
                 return $this->cards;
         }
 
