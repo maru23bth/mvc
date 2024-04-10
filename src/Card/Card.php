@@ -82,7 +82,8 @@ class Card
         return $result;
     }
 
-    public function getValue(): int {
+    public function getValue(): int
+    {
         switch ($this->number) {
             case 'Jack':
                 return 11;

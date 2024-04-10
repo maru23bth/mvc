@@ -5,7 +5,6 @@ namespace App\Card;
 use App\Card\Card;
 use App\Card\CardCollection;
 
-
 class DeckOfCards extends CardCollection
 {
     public function __construct()

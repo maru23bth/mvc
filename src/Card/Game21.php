@@ -11,11 +11,10 @@ define('PLAYER', 1);
 
 class Game21
 {
-
     private DeckOfCards $deck;
     public CardHand $bank;
     public CardHand $player;
-    private static $BANK_STOPS_AT = 17;
+    private static int $bankStopsAt = 17;
 
     public function __construct()
     {
@@ -30,11 +29,12 @@ class Game21
     }
 
     /**
-     * Plays bank untill $BANK_STOPS_AT
-     * @return void 
+     * Plays bank untill $bankStopsAt
+     * @return void
      */
-    private function playBank(): void {
-        while ($this->getHandValues($this->bank)[0] < self::$BANK_STOPS_AT) {
+    private function playBank(): void
+    {
+        while ($this->getHandValues($this->bank)[0] < self::$bankStopsAt) {
             $this->drawCard($this->bank);
         }
     }
@@ -43,23 +43,26 @@ class Game21
      * Draw one more card for player
      * @return bool false if we can't get more cards.
      */
-    public function playerDraw(): bool {
+    public function playerDraw(): bool
+    {
         $return = $this->drawCard($this->player);
 
 
         return $return;
     }
 
-    public function playerStop(): void {
+    public function playerStop(): void
+    {
         $this->playBank();
     }
 
     /**
      * False if game not ended.
      * 0 if bank winns, 1 if player winns
-     * @return bool|int 
+     * @return bool|int
      */
-    public function winner(): bool|int {
+    public function winner(): bool|int
+    {
         // If game not started
         if (!count($this->player->cards)) {
             return false;
@@ -85,10 +88,11 @@ class Game21
 
     /**
      * Draw a new card for $hand
-     * @param CardHand $hand 
+     * @param CardHand $hand
      * @return bool False if over 21 or deck is empty
      */
-    private function drawCard(CardHand &$hand): bool {
+    private function drawCard(CardHand &$hand): bool
+    {
         if ($this->over21($hand)) {
             return false;
         }
@@ -100,17 +104,19 @@ class Game21
         return true;
     }
 
-    public function getBestHandValue(CardHand &$hand): int {
+    public function getBestHandValue(CardHand &$hand): int
+    {
         $values = $this->getHandValues($hand); // Get all possible values
-        return array_reduce($values, fn($best, $value) => ($value <= 21 && $value > $best)? $value:$best, 0);
+        return array_reduce($values, fn ($best, $value) => ($value <= 21 && $value > $best) ? $value : $best, 0);
     }
 
     /**
-     * 
-     * @param CardHand $hand 
+     *
+     * @param CardHand $hand
      * @return int[] Array of possible values of hand sorted asc.
      */
-    public function getHandValues(CardHand &$hand): array {
+    public function getHandValues(CardHand &$hand): array
+    {
         $return = [0];
         foreach ($hand->cards as $card) {
             $cardValue = $card->getValue();
@@ -132,11 +138,12 @@ class Game21
     }
 
     /**
-     * 
-     * @param CardHand $hand 
+     *
+     * @param CardHand $hand
      * @return bool True if hand is over 21.
      */
-    public function over21(CardHand &$hand): bool {
+    public function over21(CardHand &$hand): bool
+    {
         $handValues = $this->getHandValues($hand);
         return boolval($handValues[0] > 21);
     }
