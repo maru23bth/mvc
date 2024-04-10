@@ -14,7 +14,7 @@ use App\Card\CardHand;
 class ControllerCard extends AbstractController
 {
     #[Route("/card", name: "card/index")]
-    public function index(Request $request, SessionInterface $session): Response
+    public function index(): Response
     {
         $deck = new DeckOfCards();
         $deck->shuffle();
@@ -34,7 +34,7 @@ class ControllerCard extends AbstractController
     }
 
     #[Route("card/deck", name: "card/deck")]
-    public function deck(Request $request, SessionInterface $session): Response
+    public function deck(SessionInterface $session): Response
     {
         $deck = $session->get('deck', new DeckOfCards());
         $session->set('deck', $deck);
@@ -46,7 +46,7 @@ class ControllerCard extends AbstractController
     }
 
     #[Route("/card/deck/shuffle", name: "card/deck/shuffle")]
-    public function shuffle(Request $request, SessionInterface $session): Response
+    public function shuffle(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
         $deck->shuffle();
@@ -56,7 +56,7 @@ class ControllerCard extends AbstractController
     }
 
     #[Route("/card/deck/draw/{number<\d+>}", name: "card/deck/draw", defaults: ["number" => 1])]
-    public function draw(int $number, Request $request, SessionInterface $session): Response
+    public function draw(int $number, SessionInterface $session): Response
     {
         $deck = $session->get('deck', new DeckOfCards());
         $hand = $session->get('hand', new CardHand());
@@ -77,7 +77,7 @@ class ControllerCard extends AbstractController
     }
 
     #[Route("/card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card/deck/deal")]
-    public function deal(int $players, int $cards, Request $request, SessionInterface $session): Response
+    public function deal(int $players, int $cards, SessionInterface $session): Response
     {
         $deck = $session->get('deck', new DeckOfCards());
         $hands = [];

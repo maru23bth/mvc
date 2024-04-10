@@ -15,7 +15,7 @@ use App\Card\CardHand;
 class ControllerApiJsonCard extends AbstractController
 {
     #[Route("/api/deck ", methods: ['GET'])]
-    public function deck(Request $request, SessionInterface $session): Response
+    public function deck(SessionInterface $session): Response
     {
         $deck = $session->get('deck', new DeckOfCards());
         $session->set('deck', $deck);
@@ -37,7 +37,7 @@ class ControllerApiJsonCard extends AbstractController
     }
 
     #[Route("/api/deck/shuffle", methods: ['POST'])]
-    public function shuffle(Request $request, SessionInterface $session): Response
+    public function shuffle(SessionInterface $session): Response
     {
         $deck = new DeckOfCards();
         $deck->shuffle();
@@ -57,7 +57,7 @@ class ControllerApiJsonCard extends AbstractController
     }
 
     #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", methods: ['POST'])]
-    public function deal(int $players, int $cards, Request $request, SessionInterface $session): Response
+    public function deal(int $players, int $cards, SessionInterface $session): Response
     {
         $deck = $session->get('deck', new DeckOfCards());
         $hands = [];

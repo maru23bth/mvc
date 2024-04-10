@@ -32,11 +32,10 @@ class CardCollection
             if ($key === false) {
                 return false;
             }
-        } else {
-            $key = array_rand($this->cards);
+            return array_splice($this->cards, $key, 1)[0];
         }
 
-        return array_splice($this->cards, $key, 1)[0];
+        return array_splice($this->cards, array_rand($this->cards), 1)[0];
     }
 
     /**
@@ -45,13 +44,13 @@ class CardCollection
      */
     public function sort()
     {
-        usort($this->cards, function (Card $a, Card $b) {
-            if ($a->color !== $b->color) {
-                return $a->color <=> $b->color;
-            } elseif ($a->suit !== $b->suit) {
-                return $a->suit <=> $b->suit;
-            } elseif ($a->number !== $b->number) {
-                return array_search($a->number, Card::NUMBERS) <=> array_search($b->number, Card::NUMBERS);
+        usort($this->cards, function (Card $cardA, Card $cardB) {
+            if ($cardA->color !== $cardB->color) {
+                return $cardA->color <=> $cardB->color;
+            } elseif ($cardA->suit !== $cardB->suit) {
+                return $cardA->suit <=> $cardB->suit;
+            } elseif ($cardA->number !== $cardB->number) {
+                return array_search($cardA->number, Card::NUMBERS) <=> array_search($cardB->number, Card::NUMBERS);
             }
             return 0;
         });
