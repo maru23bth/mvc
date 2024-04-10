@@ -21,7 +21,8 @@
         Klassen är en mall för objektet kan man säga, för att utnyttja klassens metoder måste man skapa ett objekt.<br>
         Ett objekt är en förekomst av en klass.<br>
         <br>
-        En klass kan dock innehålla statiska metoder och properties som kan köras utan att ett objekt skapats från klassen.
+        En klass kan dock innehålla statiska metoder och properties som kan köras utan att ett objekt skapats från
+        klassen.
     </p>
     <p>
         Jag uppfattar kodbas och koden som väldigt strukturerad och gillar den.<br>
@@ -43,7 +44,8 @@
     <ul>
         <li><b>Arv</b>
             Ärver egenskaper från en föräldrarklass.
-            Dvs. de variabler (egenskaper) och metoder som skapas i den nya klassen kan addera funktion eller skriva över funktioner från föräldrarklassen.<br>
+            Dvs. de variabler (egenskaper) och metoder som skapas i den nya klassen kan addera funktion eller skriva
+            över funktioner från föräldrarklassen.<br>
             Föräldrarklssens variabler och metoder finns också i den nya klassen.
         </li>
         <li><b>Komposition</b>
@@ -58,11 +60,12 @@
             Definieras en trait "class" kan denna kod "importeras" och därmed användas i flera klasser.
         </li>
     </ul>
-    
+
     <p>
         Jag började med att göra Card klassen, som var ganska självförklarande.<br>
         Därefter började jag med DeckOfCards...
-        när jag senare skulle börja med CardHand kom jag underfund med att en "hand" och kortlek delar grundegenskapen att hålla kort.<br>
+        när jag senare skulle börja med CardHand kom jag underfund med att en "hand" och kortlek delar grundegenskapen
+        att hålla kort.<br>
         Och jag strukturerade därför om och skapade CardCollection som har som uppgift att hålla 0 eller flera Card.<br>
         Därmed fick CardHand och DeckOfCards ärva CardCollection klassen.<br>
         Den konstruktionen är jag just nu nöjd med...<br>
@@ -76,10 +79,40 @@
 
     <p>
         TIL denna vecka blev arbetet med klasser i PHP och de magiska metoderna __toString, __get m.m.<br>
-        Det blir lite rörigt för mig när man rör sig mellan js, python och php... jag saknar t.ex. get för specika variabler och __compare för att jämföra två klass instanser.<br>        
+        Det blir lite rörigt för mig när man rör sig mellan js, python och php... jag saknar t.ex. get för specika
+        variabler och __compare för att jämföra två klass instanser.<br>
     </p>
 </article>
 
 
-{% endblock %}
+<article id="kmom03">
+    <h2>Kmom03</h2>
 
+    <p>        
+        Både flödesdiagram och psuedokod var nytt för mig.<br>
+        Flödesdiagrammet tycker jag var bra och tycker jag fick till det ganska bra.
+        Ser också hur det kan hjälpa till så man tänker rätt.<br>
+
+        Psuedokod kanske var lite svårare,
+        mest för att jag kanske inte riktigt förstår på vilken nivå man ska lägga den.
+        Och heller inte riktigt hur fritt man kan skriva.<br>
+        Jag hittade <a href="https://pseudoeditor.com/app/">pseudoeditor.com</a> som jag använde.<br>
+        Jag gjorde mer en grov modell av hur jag tänkt flödet, där man egentligen skulle se både användare och bank som spelare.<br>
+    </p>
+    <p>
+        Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken
+        förbättringspotential ser du i din koden, dina klasser och applikationen som helhet?
+        Jag valde att skapa en ny class där all spelligik finns.<br>
+        Denna klass använde sedan kortlek och "korthänder" från tidigare uppgifter.<br>
+        Jag hade lite problem med PHP hantering av "Passing by Reference", men fick till det.
+    </p>
+    <p>
+        Nu när vi går vidare så blir det väldigt snabbt och enkelt att forsätta med Symfony.<br>
+        Skönt att bara kunna fokusera på koden och lätt få hjälpen från ramverket att visa det man önskar.
+    </p>
+    <p>
+        TIL denna vecka blev att läsa på om "Passing by Reference".
+    </p>
+</article>
+
+{% endblock %}
