@@ -4,6 +4,9 @@ namespace App\Card;
 
 use App\Card\Card;
 
+/**
+ * @property-read \App\Card\Card[] $cards
+ */
 class CardCollection
 {
     /**
