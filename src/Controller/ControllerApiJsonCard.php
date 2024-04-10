@@ -17,6 +17,9 @@ class ControllerApiJsonCard extends AbstractController
     #[Route("/api/deck ", methods: ['GET'])]
     public function deck(SessionInterface $session): Response
     {
+        /**
+         * @var \App\Card\DeckOfCards $deck 
+         */
         $deck = $session->get('deck', new DeckOfCards());
         $session->set('deck', $deck);
 
@@ -59,6 +62,9 @@ class ControllerApiJsonCard extends AbstractController
     #[Route("/api/deck/deal/{players<\d+>}/{cards<\d+>}", methods: ['POST'])]
     public function deal(int $players, int $cards, SessionInterface $session): Response
     {
+        /**
+         * @var \App\Card\DeckOfCards $deck 
+         */        
         $deck = $session->get('deck', new DeckOfCards());
         $hands = [];
 

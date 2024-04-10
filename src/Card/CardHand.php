@@ -17,6 +17,10 @@ class CardHand extends CardCollection
         return $this->draw($card);
     }
 
+    /**
+     * Returns all cards
+     * @return \App\Card\Card[] 
+     */
     public function getcards(): array
     {
         return $this->cards;

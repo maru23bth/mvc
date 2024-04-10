@@ -31,32 +31,17 @@ class Card
     public readonly string $number;
     public readonly string $color;
 
-    public function __construct($suit = null, $number = null)
-    {
-        if ($suit) {
-            $this->setSuit($suit);
-        }
-        if ($number) {
-            $this->setNumber($number);
-        }
-    }
-
-    public function setSuit(string $suit)
+    public function __construct(string $suit, string $number)
     {
         if (!array_key_exists($suit, self::SUITS)) {
             throw new InvalidArgumentException("Suit: $suit is not valid");
         }
-
         $this->suit = $suit;
         $this->color = self::SUITS[$this->suit]['color'];
-    }
 
-    public function setNumber(string $number)
-    {
         if (!in_array($number, self::NUMBERS)) {
             throw new InvalidArgumentException("Number: $number is not valid");
         }
-
         $this->number = $number;
     }
 
@@ -72,22 +57,6 @@ class Card
         }
 
         $result .= self::SUITS[$this->suit]['unicode'];
-/*        switch ($this->suit) {
-            case 'Spades':
-                $result .= "A";
-                break;
-            case 'Hearts':
-                $result .= "B";
-                break;
-            case 'Clubs':
-                $result .= "D";
-                break;
-            case 'Diamonds':
-                $result .= "C";
-                break;
-            default:
-                return $result .= "BF";
-        }*/
 
         switch ($this->number) {
             case '10':

@@ -36,6 +36,9 @@ class ControllerCard extends AbstractController
     #[Route("card/deck", name: "card/deck")]
     public function deck(SessionInterface $session): Response
     {
+        /**
+         * @var \App\Card\DeckOfCards $deck 
+         */        
         $deck = $session->get('deck', new DeckOfCards());
         $session->set('deck', $deck);
 
@@ -58,7 +61,13 @@ class ControllerCard extends AbstractController
     #[Route("/card/deck/draw/{number<\d+>}", name: "card/deck/draw", defaults: ["number" => 1])]
     public function draw(int $number, SessionInterface $session): Response
     {
+        /**
+         * @var \App\Card\DeckOfCards $deck 
+         */  
         $deck = $session->get('deck', new DeckOfCards());
+        /**
+         * @var \App\Card\CardHand $hand
+         */  
         $hand = $session->get('hand', new CardHand());
         $cards = [];
 
@@ -79,6 +88,9 @@ class ControllerCard extends AbstractController
     #[Route("/card/deck/deal/{players<\d+>}/{cards<\d+>}", name: "card/deck/deal")]
     public function deal(int $players, int $cards, SessionInterface $session): Response
     {
+        /**
+         * @var \App\Card\DeckOfCards $deck 
+         */        
         $deck = $session->get('deck', new DeckOfCards());
         $hands = [];
 
@@ -98,7 +110,6 @@ class ControllerCard extends AbstractController
         }
 
         $session->set('deck', $deck);
-        $session->set('hand', $hand);
 
         return $this->render('card/deal.html.twig', ['deck' => $deck->cards, 'hands' => $hands]);
     }

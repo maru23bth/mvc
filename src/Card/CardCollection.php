@@ -6,6 +6,10 @@ use App\Card\Card;
 
 class CardCollection
 {
+    /**
+     * 
+     * @var \App\Card\Card[]
+     */
     protected array $cards;
 
     /**
@@ -32,10 +36,10 @@ class CardCollection
             if ($key === false) {
                 return false;
             }
-            return array_splice($this->cards, $key, 1)[0];
+            return array_splice($this->cards, intval($key), 1)[0];
         }
 
-        return array_splice($this->cards, array_rand($this->cards), 1)[0];
+        return array_splice($this->cards, intval(array_rand($this->cards)), 1)[0];
     }
 
     /**
@@ -66,24 +70,22 @@ class CardCollection
         return array_search($card, $this->cards) !== false;
     }
 
-    public function __get($name)
+    public function __get(string $name): mixed
     {
         switch ($name) {
             case 'cards':
+                echo "__get(cards)";
                 return $this->cards;
         }
 
-        $trace = debug_backtrace();
         trigger_error(
-            'Undefined property via __get(): ' . $name .
-                ' in ' . $trace[0]['file'] .
-                ' on line ' . $trace[0]['line'],
+            'Undefined property via __get(): ' . $name,
             E_USER_NOTICE
         );
         return null;
     }
 
-    public function __toString()
+    public function __toString(): string
     {
         return 'Collection of ' . count($this->cards) . ' cards';
     }
