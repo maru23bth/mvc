@@ -16,7 +16,7 @@ class CardHandTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties.
      */
-    public function testCreateCardHand()
+    public function testCreateCardHand(): void
     {
 
         // Create CardHand object

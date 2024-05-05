@@ -15,7 +15,7 @@ class CardTest extends TestCase
     /**
      * Construct invalid object and verify that trigger exception.
      */
-    public function testCreateInvalidSuite()
+    public function testCreateInvalidSuite(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         new Card("Invalid", "2");
@@ -24,7 +24,7 @@ class CardTest extends TestCase
     /**
      * Construct invalid object and verify that trigger exception.
      */
-    public function testCreateInvalidNumber()
+    public function testCreateInvalidNumber(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         new Card("Spades", "Invalid");
@@ -34,7 +34,7 @@ class CardTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties.
      */
-    public function testCreateCard()
+    public function testCreateCard(): void
     {
 
         // Loop through all suits and numbers
@@ -51,13 +51,18 @@ class CardTest extends TestCase
                 // Test getValue()
                 if ($number === "Jack") {
                     $this->assertEquals(11, $card->getValue());
-                } elseif ($number === "Queen") {
+                }
+                if ($number === "Queen") {
                     $this->assertEquals(12, $card->getValue());
-                } elseif ($number === "King") {
+                }
+                if ($number === "King") {
                     $this->assertEquals(13, $card->getValue());
-                } elseif ($number === "Ace") {
+                }
+                if ($number === "Ace") {
                     $this->assertEquals(14, $card->getValue());
-                } else {
+                }
+                
+                if (is_numeric($number)) {
                     $this->assertEquals((int) $number, $card->getValue());
                 }
 

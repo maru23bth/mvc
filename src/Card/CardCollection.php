@@ -83,6 +83,7 @@ class CardCollection
             'Undefined property via __get(): ' . $name,
             E_USER_NOTICE
         );
+        return null;
     }
 
     public function __toString(): string

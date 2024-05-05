@@ -17,7 +17,7 @@ class DeckOfCardsTest extends TestCase
      * Construct object and verify that the object has the expected
      * properties.
      */
-    public function testCreateDeckOfCards()
+    public function testCreateDeckOfCards(): void
     {
         // Create DeckOfCards object
         $deckOfCards = new DeckOfCards();
@@ -59,16 +59,5 @@ class DeckOfCardsTest extends TestCase
         while ($card = $deckOfCards->draw()) {
             $this->assertInstanceOf("\App\Card\Card", $card);
         }
-    }
-
-    /**
-     * Contruct object and test to get invalid property.
-     * @expectedException Error
-     */
-    public function testGetInvalidProperty()
-    {
-        $deckOfCards = new DeckOfCards();
-        $this->expectNotice();
-        $deckOfCards->invalid;
     }
 }

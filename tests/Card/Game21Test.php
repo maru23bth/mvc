@@ -13,7 +13,7 @@ class Game21Test extends TestCase
      * Construct object and verify that the object has the expected
      * properties.
      */
-    public function testCreateGame21()
+    public function testCreateGame21(): void
     {
         // Create Game21 object
         $game21 = new Game21();
@@ -43,7 +43,7 @@ class Game21Test extends TestCase
     /**
      * Construct object and play over 21
      */
-    public function testPlayOver21()
+    public function testPlayOver21(): void
     {
         // Create Game21 object
         $game21 = new Game21();
