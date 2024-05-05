@@ -9,9 +9,8 @@ use PHPUnit\Framework\TestCase;
  */
 class CardHandTest extends TestCase
 {
-
-    const SUITS = ["Spades", "Hearts", "Clubs", "Diamonds"];
-    const NUMBERS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+    public const SUITS = ["Spades", "Hearts", "Clubs", "Diamonds"];
+    public const NUMBERS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 
     /**
      * Construct object and verify that the object has the expected
@@ -27,7 +26,7 @@ class CardHandTest extends TestCase
 
         // Loop through all suits and numbers adding to cardHand
         foreach (self::SUITS as $suit) {
-            foreach (SELF::NUMBERS as $number) {
+            foreach (self::NUMBERS as $number) {
                 $card = new Card($suit, $number);
                 $cardHand->add($card);
             }

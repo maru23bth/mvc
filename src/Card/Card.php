@@ -57,7 +57,7 @@ class Card
 
     /**
      * Get the card as a unicode string.
-     * @return string 
+     * @return string
      */
     public function showCard(): string
     {
@@ -92,7 +92,7 @@ class Card
 
     /**
      * Get the value of the card.
-     * @return int 
+     * @return int
      */
     public function getValue(): int
     {
@@ -112,7 +112,7 @@ class Card
 
     /**
      * Get the name and color of the card as string.
-     * @return string 
+     * @return string
      */
     public function __toString(): string
     {

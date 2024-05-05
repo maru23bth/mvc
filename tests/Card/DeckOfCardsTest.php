@@ -10,9 +10,8 @@ use PHPUnit\Framework\TestCase;
  */
 class DeckOfCardsTest extends TestCase
 {
-
-    const SUITS = ["Spades", "Hearts", "Clubs", "Diamonds"];
-    const NUMBERS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+    public const SUITS = ["Spades", "Hearts", "Clubs", "Diamonds"];
+    public const NUMBERS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 
     /**
      * Construct object and verify that the object has the expected
@@ -55,7 +54,7 @@ class DeckOfCardsTest extends TestCase
         // Get deck as string
         $deck = (string) $deckOfCards;
         $this->assertStringContainsString('cards', $deck);
-        
+
         // Draw all remaining cards
         while ($card = $deckOfCards->draw()) {
             $this->assertInstanceOf("\App\Card\Card", $card);

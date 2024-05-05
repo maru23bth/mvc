@@ -9,9 +9,8 @@ use PHPUnit\Framework\TestCase;
  */
 class CardTest extends TestCase
 {
-
-    const SUITS = ["Spades", "Hearts", "Clubs", "Diamonds"];
-    const NUMBERS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
+    public const SUITS = ["Spades", "Hearts", "Clubs", "Diamonds"];
+    public const NUMBERS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 
     /**
      * Construct invalid object and verify that trigger exception.
@@ -40,7 +39,7 @@ class CardTest extends TestCase
 
         // Loop through all suits and numbers
         foreach (self::SUITS as $suit) {
-            foreach (SELF::NUMBERS as $number) {
+            foreach (self::NUMBERS as $number) {
                 $card = new Card($suit, $number);
                 $this->assertInstanceOf("\App\Card\Card", $card);
 
