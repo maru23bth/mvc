@@ -32,3 +32,7 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 tools/
+
+###> php doc ###
+.phpdoc/
+/docs/api
