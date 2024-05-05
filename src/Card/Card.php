@@ -4,6 +4,9 @@ namespace App\Card;
 
 use InvalidArgumentException;
 
+/**
+ * A class for a card.
+ */
 class Card
 {
     public const SUITS = [
@@ -31,6 +34,11 @@ class Card
     public readonly string $number;
     public readonly string $color;
 
+    /**
+     * Constructor to create a card.
+     * @param string $suit The suit of the card.
+     * @param string $number The number of the card.
+     */
     public function __construct(string $suit, string $number)
     {
         if (!array_key_exists($suit, self::SUITS)) {
@@ -46,15 +54,15 @@ class Card
     }
 
     // Unicode map: https://en.wikipedia.org/wiki/Playing_cards_in_Unicode
+
+    /**
+     * Get the card as a unicode string.
+     * @return string 
+     */
     public function showCard(): string
     {
         // Begin unicode string
         $result = "&#x1F0";
-
-        // Get correct value for suit
-        if (! key_exists($this->suit, self::SUITS)) {
-            return $result .= "BF";
-        }
 
         $result .= self::SUITS[$this->suit]['unicode'];
 
@@ -82,6 +90,10 @@ class Card
         return $result;
     }
 
+    /**
+     * Get the value of the card.
+     * @return int 
+     */
     public function getValue(): int
     {
         switch ($this->number) {
@@ -98,6 +110,10 @@ class Card
         }
     }
 
+    /**
+     * Get the name and color of the card as string.
+     * @return string 
+     */
     public function __toString(): string
     {
         return $this->number . " of " . $this->suit;
