@@ -5,7 +5,7 @@ namespace App\Card;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test cases for class Card.
+ * Test cases for class CardHand.
  */
 class CardHandTest extends TestCase
 {
@@ -47,6 +47,13 @@ class CardHandTest extends TestCase
         $cards = $cardHand->getcards();
         // Check that hands is empty
         $this->assertCount(0, $cards);
+
+        // Add a specific card two times
+        $card = new Card("Spades", "2");
+        $cardHand->add($card);
+        $cardHand->add($card);
+        // Sort the hand, fort testing sort with same cards
+        $cardHand->sort();
 
 
 
