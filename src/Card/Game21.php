@@ -25,7 +25,7 @@ class Game21
         $this->player = new CardHand();
 
         // Draw first card
-        $this->drawCard($this->player);
+        $this->playerDraw();
     }
 
     /**
