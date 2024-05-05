@@ -1,4 +1,6 @@
 {
+    "name": "symfony/skeleton",
+    "description": "A skeleton to start a new Symfony project",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -95,7 +97,9 @@
         "lint": [
             "@phpmd",
             "@phpstan"
-        ]        
+        ],
+        "phpdoc": "tools/phpdoc/phpdoc --config=tools/phpdoc/phpdoc.xml",
+        "phpunit": "XDEBUG_MODE=coverage vendor/bin/phpunit"
     },
     "conflict": {
         "symfony/symfony": "*"
