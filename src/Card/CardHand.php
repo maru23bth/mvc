@@ -7,11 +7,21 @@ use App\Card\CardCollection;
 
 class CardHand extends CardCollection
 {
+    /**
+     * Add a card to the hand
+     * @param Card $card
+     * @return void
+     */
     public function add(Card $card): void
     {
         $this->cards[] = $card;
     }
 
+    /**
+     * Remove a card from the hand if exists
+     * @param Card $card
+     * @return Card|false
+     */
     public function remove(Card $card): Card|false
     {
         return $this->draw($card);
@@ -19,7 +29,7 @@ class CardHand extends CardCollection
 
     /**
      * Returns all cards
-     * @return \App\Card\Card[]
+     * @return Card[]
      */
     public function getcards(): array
     {
