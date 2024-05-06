@@ -20,6 +20,10 @@ class Game21
     public CardHand $player;
     private static int $bankStopsAt = 17;
 
+    /**
+     * Constructor to initiate the game
+     * @return void 
+     */
     public function __construct()
     {
         // Setup
@@ -55,6 +59,10 @@ class Game21
         return $return;
     }
 
+    /**
+     * Player stops drawing cards
+     * @return void
+     */
     public function playerStop(): void
     {
         $this->playBank();
@@ -108,6 +116,11 @@ class Game21
         return true;
     }
 
+    /**
+     * Get the best value of a hand
+     * @param CardHand $hand
+     * @return int
+     */
     public function getBestHandValue(CardHand &$hand): int
     {
         $values = $this->getHandValues($hand); // Get all possible values
@@ -115,7 +128,7 @@ class Game21
     }
 
     /**
-     *
+     * Get all possible values of a hand
      * @param CardHand $hand
      * @return int[] Array of possible values of hand sorted asc.
      */
@@ -142,7 +155,7 @@ class Game21
     }
 
     /**
-     *
+     * Check if hand is over 21
      * @param CardHand $hand
      * @return bool True if hand is over 21.
      */
@@ -152,6 +165,10 @@ class Game21
         return boolval($handValues[0] > 21);
     }
 
+    /**
+     * Get string representation of game
+     * @return string
+     */
     public function __toString(): string
     {
         return 'Game 21 deck has ' . count($this->deck->cards) . ' cards left, player has ' . $this->getHandValues($this->player)[0];
