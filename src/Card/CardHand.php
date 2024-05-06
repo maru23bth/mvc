@@ -5,6 +5,10 @@ namespace App\Card;
 use App\Card\Card;
 use App\Card\CardCollection;
 
+/**
+ * Class CardHand for a collection of cards in a hand
+ * @package App\Card
+ */
 class CardHand extends CardCollection
 {
     /**

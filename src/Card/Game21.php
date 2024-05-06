@@ -9,6 +9,10 @@ use App\Card\DeckOfCards;
 define('BANK', 0);
 define('PLAYER', 1);
 
+/**
+ * Class Game21 for playing game 21
+ * @package App\Card
+ */
 class Game21
 {
     private DeckOfCards $deck;

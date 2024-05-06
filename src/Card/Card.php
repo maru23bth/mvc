@@ -6,6 +6,7 @@ use InvalidArgumentException;
 
 /**
  * A class for a card.
+ * @package App\Card
  */
 class Card
 {

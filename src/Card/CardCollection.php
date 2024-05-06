@@ -5,6 +5,8 @@ namespace App\Card;
 use App\Card\Card;
 
 /**
+ * Class CardCollection for a collection of cards
+ * @package App\Card
  * @property-read \App\Card\Card[] $cards
  */
 class CardCollection
