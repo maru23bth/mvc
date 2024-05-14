@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BookRepository;
 use App\Entity\Book;
+use PHPUnit\Util\Json;
 
 class LibraryController extends AbstractController
 {
@@ -116,4 +118,50 @@ class LibraryController extends AbstractController
         $this->addFlash('notice', 'Book saved!');
         return $this->redirectToRoute('library');
     }
+
+    #[Route("/api/library/books")]
+    public function apiBooks(BookRepository $library): Response 
+    {
+        $books = $library->findAll();
+
+        $data = [];
+        foreach ($books as $book) {
+            $data[] = [
+                'id' => $book->getId(),
+                'title' => $book->getTitle(),
+                'author' => $book->getAuthor(),
+                'isbn' => $book->getIsbn(),
+                // 'image' => $book->getImage(),
+            ];
+        }
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
+    #[Route("/api/library/book/{isbn}")]
+    public function apiBook(string $isbn, BookRepository $library): Response 
+    {
+        $data = [];
+        $book = $library->findOneBy(['isbn' => $isbn]);
+
+        if ($book) {
+             $data = [
+                'id' => $book->getId(),
+                'title' => $book->getTitle(),
+                'author' => $book->getAuthor(),
+                'isbn' => $book->getIsbn(),
+                // 'image' => $book->getImage(),
+            ];
+        }
+
+        $response = new JsonResponse((object) $data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }    
 }
