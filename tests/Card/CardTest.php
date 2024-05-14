@@ -61,7 +61,7 @@ class CardTest extends TestCase
                 if ($number === "Ace") {
                     $this->assertEquals(14, $card->getValue());
                 }
-                
+
                 if (is_numeric($number)) {
                     $this->assertEquals((int) $number, $card->getValue());
                 }

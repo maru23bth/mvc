@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\BookRepository;
 use App\Entity\Book;
@@ -58,14 +59,14 @@ class LibraryController extends AbstractController
 
         // Delete
         $entityManager->remove($book);
-        $entityManager->flush();    
+        $entityManager->flush();
 
         $this->addFlash('notice', 'Book deleted!');
         return $this->redirectToRoute('library');
     }
 
     #[Route("/library/edit/{id}", name: "library/edit", methods: ['GET'])]
-    public function getEdit($id, BookRepository $library): Response
+    public function getEdit(string $id, BookRepository $library): Response
     {
         $id = intval($id);
 
@@ -83,7 +84,7 @@ class LibraryController extends AbstractController
     }
 
     #[Route("/library/edit/{id}", name: "library/editPOST", methods: ['POST'])]
-    public function postEdit($id, BookRepository $library, Request $request, ManagerRegistry $doctrine): Response
+    public function postEdit(string $id, BookRepository $library, Request $request, ManagerRegistry $doctrine): Response
     {
         $entityManager = $doctrine->getManager();
 
@@ -105,6 +106,7 @@ class LibraryController extends AbstractController
         $book->setIsbn($request->get('isbn', ''));
 
         // If we have new image save it
+        
         $image = $request->files->get('image');
         if ($image) {
             $imageData = 'data:'.$image->getClientMimeType().';base64,' . base64_encode($image->getContent());
@@ -120,7 +122,7 @@ class LibraryController extends AbstractController
     }
 
     #[Route("/api/library/books")]
-    public function apiBooks(BookRepository $library): Response 
+    public function apiBooks(BookRepository $library): Response
     {
         $books = $library->findAll();
 
@@ -143,18 +145,18 @@ class LibraryController extends AbstractController
     }
 
     #[Route("/api/library/book/{isbn}")]
-    public function apiBook(string $isbn, BookRepository $library): Response 
+    public function apiBook(string $isbn, BookRepository $library): Response
     {
         $data = [];
         $book = $library->findOneBy(['isbn' => $isbn]);
 
         if ($book) {
-             $data = [
-                'id' => $book->getId(),
-                'title' => $book->getTitle(),
-                'author' => $book->getAuthor(),
-                'isbn' => $book->getIsbn(),
-                // 'image' => $book->getImage(),
+            $data = [
+               'id' => $book->getId(),
+               'title' => $book->getTitle(),
+               'author' => $book->getAuthor(),
+               'isbn' => $book->getIsbn(),
+               // 'image' => $book->getImage(),
             ];
         }
 
@@ -163,5 +165,5 @@ class LibraryController extends AbstractController
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
         return $response;
-    }    
+    }
 }

@@ -22,7 +22,7 @@ class Game21
 
     /**
      * Constructor to initiate the game
-     * @return void 
+     * @return void
      */
     public function __construct()
     {
