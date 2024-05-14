@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LibraryController!{% endblock %}
+
+{% block main %}
+
+<h1>{{ book.title}}</h1>
+
+{# read and display just one flash message type #}
+{% for message in app.flashes('notice') %}
+<p class="flash-notice">
+    {{ message }}
+</p>
+{% endfor %}
+
+
+<img src="{{ book.image }}" alt="{{ book.title }}" style="max-height:500px;">
+
+<dl>
+    <dt>Title</dt>
+    <dd>{{ book.title }}</dd>
+
+    <dt>ISBN</dt>
+    <dd>{{ book.isbn }}</dd>
+    
+    <dt>Author</dt>
+    <dd>{{ book.author }}</dd>
+
+</dl>
+
+<p>
+    <form>
+        <button type="submit" formmethod="get" formaction="{{ path('library/edit', {id: book.id}) }}">Edit</button>
+        <button type="submit" onclick="return confirm('Sure you want to delete the book?')" formmethod="post" formaction="{{ path('library/delete', {id: book.id}) }}">Delete</button>
+    </form>
+</p>
+
+{% endblock %}
