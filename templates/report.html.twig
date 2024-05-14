@@ -88,7 +88,7 @@
 <article id="kmom03">
     <h2>Kmom03</h2>
 
-    <p>        
+    <p>
         Både flödesdiagram och psuedokod var nytt för mig.<br>
         Flödesdiagrammet tycker jag var bra och tycker jag fick till det ganska bra.
         Ser också hur det kan hjälpa till så man tänker rätt.<br>
@@ -97,7 +97,8 @@
         mest för att jag kanske inte riktigt förstår på vilken nivå man ska lägga den.
         Och heller inte riktigt hur fritt man kan skriva.<br>
         Jag hittade <a href="https://pseudoeditor.com/app/">pseudoeditor.com</a> som jag använde.<br>
-        Jag gjorde mer en grov modell av hur jag tänkt flödet, där man egentligen skulle se både användare och bank som spelare.<br>
+        Jag gjorde mer en grov modell av hur jag tänkt flödet, där man egentligen skulle se både användare och bank som
+        spelare.<br>
     </p>
     <p>
         Berätta om din implementation från uppgiften. Hur löste du uppgiften, är du nöjd/missnöjd, vilken
@@ -124,16 +125,16 @@
         Jag tycker det var ganska enkelt att skriva test
         och det känns som att det är en bra metod att använda för att säkerställa att koden fungerar som den ska.<br>
         Jag har tidigare skrivit test i python och det känns som att det är ungefär samma sak.<br>
-        
+
     </p>
 
     <p>
         <!-- Hur väl lyckades du med kodtäckningen av din kod, lyckades du nå mer än 90% kodtäckning? -->
         Jag lyckades med att få 92% kodtäckning på min kod.<br>
         Vilket jag är nöjd med, det är svårt att få alla rader testade när det handlar om spel med slumpmässiga kort.
-        
+
     </p>
-    
+
     <p>
         <!-- Upplever du din egen kod som “testbar kod” eller finns det delar i koden som är mer eller mindre testbar och finns det saker som kan göras för att förbättra kodens testbarhet? -->
         Jag tycker att min kod är testbar, men precis som ovan är det vissa rader som är svåra att nå med test.<br>
@@ -141,24 +142,62 @@
         Efersom phpunite i version 10 och högre inte kan testa varningar.<br>
         Jag valde att inte testa den delen av koden.
     </p>
-    
+
     <p>
         <!-- Valde du att skriva om delar av din kod för att förbättra den eller göra den mer testbar, om så berätta lite hur du tänkte. -->
         Jag valde att inte skriva om någon kod för att göra den mer testbar.<br>
         Men vissa rader som gjorde felkontroller som omöjligen kunde uppstå togs bort.
     </p>
-    
+
     <p>
         <!-- Fundera över om du anser att testbar kod är något som kan identifiera “snygg och ren kod”. -->
         Jag tycker att testbar kod är snygg och ren kod.<br>
         Det är lätt att se vad koden gör och att den fungerar som den ska.
     </p>
-    
+
     <p>
         <!-- Vilken är din TIL för detta kmom? -->
         TIL denna vecka är att skriva test i phpunit.<br>
-        Det var helt nytt för mig och jag tycker att det var en bra metod att använda för att säkerställa att koden fungerar som den ska.<br>
+        Det var helt nytt för mig och jag tycker att det var en bra metod att använda för att säkerställa att koden
+        fungerar som den ska.<br>
         Skönt att komma över den tröskeln.
+    </p>
+</article>
+
+<article id="kmom05">
+    <h2>Kmom05</h2>
+    <p>
+        Det var lite segt att komma igång med Doctrine,
+        jag tyckte framförallt att jag inte hittade någon bra documentation av metoder som finns i Doctrine.<br>
+        Jag hittade en del exempel, men skulle önskad att det fanns en bättre API dokumentation.<br>
+        Det kanske finns, bara jag som inte hittade.<br>
+
+        Sedan tycker jag det gick bra, även om jag inte jobbat med ORM tidigare.<br>
+        Det är spännande att pröva det sättet av jobba med databaser.<br>
+    </p>
+    <p>
+        Jag började med att designa databasen (entity).<br>
+        Det det blev en enkel "bok" med titel, författare och ISBN samt ett fält för bild.<br>
+        Jag valde att spare bilden som data url med base64, inte det mest effektiva men allt är samlat i databasen.<br>
+        Och det var enkelt att visa upp bilden i twig utan att länka.<br>
+
+        Jag började med att göra en enkel sida som visade upp alla böcker i databasen.<br>
+        Sedan la jag till en sida där man kunde lägga till böcker.<br>
+        För att inte upprepa kod är det samma sida som sedan används för att redigera böcker.<br>
+
+    </p>
+    <p>
+        Det gick bra att jobba med ORM i CRUD.<br>
+        Saknade som sagt en bra sammanfattande dokumentation av metoder.<br>
+        Jag lyckades hitta det jag behövde och det gick bra.<br>
+    </p>
+    <p>
+        I vissa aspekter är det enklare att jobba med objekt i ORM.<br>
+        Det är ganska naturligt att jobba med denna typ av applikation vi gjorde som objekt.<br>
+        Där datan naturligt kan representeras som ett objekt.<br>
+    </p>
+    <p>
+        TIL denna vecka är att jobba med ORM, även om jag kände till konceptet tidigare har jag aldrig jobbat med det.<br>
     </p>
 </article>
 
