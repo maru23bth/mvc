@@ -109,7 +109,7 @@ class Game21
             return false;
         }
         $card = $this->deck->draw();
-        if (!$card) {
+        if ($card === false) {
             return false;
         }
         $hand->add($card);
