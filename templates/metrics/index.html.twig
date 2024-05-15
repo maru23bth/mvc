@@ -1,0 +1,125 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Metrics analys{% endblock %}
+
+{% block main %}
+<h1>Metrics analys</h1>
+
+<h2>Introduktion</h2>
+
+<p>6C om kodkvalitet</p>
+
+<dl>
+    <dt>Codestyle</dt>
+    <dd>Är en uppsättning regler eller riktlinjer som styr källkodens layout</dd>
+    <dt>Coverage</dt>
+    <dd>Kodtäckning är ett mått som kan hjälpa dig att förstå hur mycket av din kod som testas.<br>
+        En hög kodtäckning innebär att en stor del av koden testas och en låg kodtäckning innebär att en liten del av koden testas.<br>
+        T.ex. så testas bara en del av koden i detta projekt ca 30%.<br>
+    </dd>
+    <dt>Complexity</dt>
+    <dd>Kodkomplexitetsanalys identifierar kod som är benägen för fel, svår att förstå och svår att underhålla.</dd>
+    <dt>Cohesion</dt>
+    <dd>Sammanhållning hänvisar till i vilken grad delar inom en modul samverkar för att uppfylla ett enda väldefinierat syfte.
+        <!--Hög sammanhållning innebär att element är nära besläktade och fokuserade på ett enda syfte,
+        medan låg sammanhållning innebär att element är löst relaterade och tjänar flera syften.-->
+    </dd>
+    <dt>Coupling</dt>
+    <dd>Koppling avser graden av ömsesidigt beroende mellan programvarumoduler.
+        <!--Hög koppling innebär att moduler är tätt sammankopplade och förändringar i en modul kan påverka andra moduler.-->
+    </dd>
+    <dt>CRAP</dt>
+    <dd>C.R.A.P. är en förkortning för Change Risk Anti-Patterns.
+        Med andra ord är kod med höga CRAP-poäng riskabel att ändra.
+    </dd>
+</dl>
+
+<h2>Phpmetrics</h2>
+<p>
+    <a href="../docs/metrics/">Phpmetrics</a> är ett verktyg för att mäta kodkvalitet.<br>
+    Det ger en översikt över kodens kvalitet och komplexitet.<br>
+    Det mäter kodens komplexitet, koppling, sammanhållning och kodtäckning.<br>
+</p>
+<ul>
+    <li><a href="../docs/metrics/complexity.html">Complexity</a></li>
+    <li><a href="../docs/metrics/coupling.html">Coupling</a></li>
+    <li><a href="../docs/metrics/oop.html">Cohesion</a></li>
+    <li><a href="../docs/metrics/junit.html">Code Coverage</a></li>
+</ul>
+
+<h2>Scrutinizer</h2>
+<p>
+    <a href="https://scrutinizer-ci.com/g/maru23bth/mvc/build-status/main">
+        <img src="https://scrutinizer-ci.com/g/maru23bth/mvc/badges/build.png?b=main" alt="Build Status">
+    </a>
+    <a href="https://scrutinizer-ci.com/g/maru23bth/mvc/code-structure/main/code-coverage">
+        <img src="https://scrutinizer-ci.com/g/maru23bth/mvc/badges/coverage.png?b=main" alt="Code Coverage">
+    </a>
+    <a href="https://scrutinizer-ci.com/g/maru23bth/mvc/?branch=main">
+        <img src="https://scrutinizer-ci.com/g/maru23bth/mvc/badges/quality-score.png?b=main" alt="Quality Score">
+    </a>
+</p>
+<p>
+    Kodtäckning (Coverage) är låg, 30%.
+    Men det beror på att endast en del av koden är testad (kortleken och spelet).
+    Tittar man på den delen så är kodtäckningen 93.71%.<br>
+</p>
+
+<p>
+    Scrutinizer listar några möjliga fel under Issues.<br>
+    <ul>
+        <li>Card/Card, CardHand och DeckOfCards<br>
+            Har alla egenskaper som är deklarerade read-only.<br>
+            Jag får gå igenom koden och se om jag kan förbättra den.
+        </li>
+        <li>
+            Card/Game21<br>
+            The condition $card is always false.
+            Här vet jag inte riktigt vad den menar, men jag ska kolla på koden och se om jag kan förbättra den.
+        </li>
+        <li>
+            Controller/LibraryController<br>
+            The variable $book does not seem to be defined for all execution paths leading up to this point.<br>
+            Även om den varnar för $book kanske inte är definierad så fungerar koden som den ska.
+            Men jag ska förbättra koden så den blir tydligare.
+        </li>
+    </ul>
+</p>
+
+<p>
+    Scrutinizer listar några möjliga förbättringar under Code Quality.<br>
+    Som har stor komplexitet eller höga CRAP-poäng.<br>
+    <ul>
+        <li>
+            App\Card\CardTest::testCreateCard()
+        </li>
+        <li>
+            Controller\ControllerGame::playPost()
+        </li>
+        <li>
+            App\Card\Card::showCard()
+        </li>
+</p>
+
+<h2>Förbättringar</h2>
+<ul>
+    <li>
+        Scrutinizer se över metoder med stor komplexitet eller höga CRAP-poäng.<br>
+        Detta bör höja kvalitspoängen.<br>
+    </li>
+    <li>
+        Scrutinizer se över möjliga fel under Issues.<br>
+        Detta bör ta bort möjliga buggar och också höja kvalitspoängen.
+    </li>
+    <li>
+        PhpMetrics se över Violations som möjligen överensstämmer med Scrutinizer issues.<br>
+        Bör ta bort violations i PhpMetrics.
+    </li>
+</ul>
+
+<h2>Diskussion</h2>
+<p>
+
+</p>
+
+{% endblock %}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1715776483">
-  <project timestamp="1715776483">
+<coverage generated="1715779444">
+  <project timestamp="1715779444">
     <file name="/home/martin/dbwebb-kurser/mvc/me/report/src/Card/Card.php">
       <class name="App\Card\Card" namespace="global">
         <metrics complexity="17" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="39" elements="43" coveredelements="43"/>
@@ -38,7 +38,7 @@
       <line num="98" type="method" name="getValue" visibility="public" complexity="6" crap="6" count="3"/>
       <line num="100" type="stmt" count="3"/>
       <line num="101" type="stmt" count="3"/>
-      <line num="102" type="stmt" count="1"/>
+      <line num="102" type="stmt" count="2"/>
       <line num="103" type="stmt" count="3"/>
       <line num="104" type="stmt" count="1"/>
       <line num="105" type="stmt" count="3"/>

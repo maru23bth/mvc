@@ -31,8 +31,8 @@ class Card
 
     public const NUMBERS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace'];
 
-    public readonly string $suit;
-    public readonly string $number;
+    //public readonly string $suit;
+    //public readonly string $number;
     public readonly string $color;
 
     /**
@@ -40,18 +40,18 @@ class Card
      * @param string $suit The suit of the card.
      * @param string $number The number of the card.
      */
-    public function __construct(string $suit, string $number)
+    public function __construct(public readonly string $suit, public readonly string $number)
     {
         if (!array_key_exists($suit, self::SUITS)) {
             throw new InvalidArgumentException("Suit: $suit is not valid");
         }
-        $this->suit = $suit;
+        //$this->suit = $suit;
         $this->color = self::SUITS[$this->suit]['color'];
 
         if (!in_array($number, self::NUMBERS)) {
             throw new InvalidArgumentException("Number: $number is not valid");
         }
-        $this->number = $number;
+        //$this->number = $number;
     }
 
     // Unicode map: https://en.wikipedia.org/wiki/Playing_cards_in_Unicode
