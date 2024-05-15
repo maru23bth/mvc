@@ -69,6 +69,7 @@ class LibraryController extends AbstractController
     public function getEdit(string $id, BookRepository $library): Response
     {
         $id = intval($id);
+        $book = null;
 
         // If book exists, get it
         if ($id) {
@@ -89,6 +90,7 @@ class LibraryController extends AbstractController
         $entityManager = $doctrine->getManager();
 
         $id = intval($id);
+        $book = null;
 
         // If book exists, get it
         if ($id) {
