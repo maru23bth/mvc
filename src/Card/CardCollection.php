@@ -40,9 +40,11 @@ class CardCollection
             if ($key === false) {
                 return false;
             }
+            /** @var Card */
             return array_splice($this->cards, intval($key), 1)[0];
         }
-
+        
+        /** @var Card */
         return array_splice($this->cards, intval(array_rand($this->cards)), 1)[0];
     }
 
