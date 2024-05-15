@@ -49,7 +49,10 @@ class DeckOfCardsTest extends TestCase
         $this->assertInstanceOf("\App\Card\Card", $card);
 
         // Try to draw the same card again
-        $this->assertFalse($deckOfCards->draw($card?$card:null));
+        if ($card !== false) {
+            $this->assertFalse($deckOfCards->draw($card));
+        }
+        //$this->assertFalse($deckOfCards->draw($card));
 
         // Get deck as string
         $deck = (string) $deckOfCards;

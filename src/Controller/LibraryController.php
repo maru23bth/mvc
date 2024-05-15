@@ -108,7 +108,7 @@ class LibraryController extends AbstractController
         $book->setIsbn($request->get('isbn', ''));
 
         // If we have new image save it
-        
+
         $image = $request->files->get('image');
         if ($image) {
             $imageData = 'data:'.$image->getClientMimeType().';base64,' . base64_encode($image->getContent());
