@@ -109,13 +109,13 @@ class Game21
             return false;
         }
 
-        /** @var \App\Card\Card | false */
         $card = $this->deck->draw();
-        if ($card === false) {
-            return false;
+        if ($card instanceof Card) {
+            $hand->add($card);
+            return true;
         }
-        $hand->add($card);
-        return true;
+
+        return false;
     }
 
     /**
