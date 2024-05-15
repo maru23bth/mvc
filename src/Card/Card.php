@@ -67,7 +67,7 @@ class Card
 
         $result .= self::SUITS[$this->suit]['unicode'];
 
-        switch ($this->number) {
+/*         switch ($this->number) {
             case '10':
                 $result .= "A";
                 break;
@@ -86,7 +86,9 @@ class Card
             default:
                 $result .= $this->number;
                 break;
-        }
+        } */
+        $case = ['10'=>'A', 'Jack'=>'B', 'Queen'=>'D', 'King'=>'E', 'Ace'=>'1'];
+        $result .= array_key_exists($this->number, $case) ? $case[$this->number] : $this->number;
 
         return $result;
     }
