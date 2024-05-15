@@ -108,6 +108,8 @@ class Game21
         if ($this->over21($hand)) {
             return false;
         }
+
+        /** @var \App\Card\Card | false */
         $card = $this->deck->draw();
         if ($card === false) {
             return false;

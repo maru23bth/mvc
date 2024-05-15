@@ -45,11 +45,11 @@ class DeckOfCardsTest extends TestCase
         $this->assertFalse($deckOfCards->exists($cards[0]));
 
         // Draw a random card
+        /** @var \App\Card\Card */
         $card = $deckOfCards->draw();
         $this->assertInstanceOf("\App\Card\Card", $card);
 
         // Try to draw the same card again
-        /** @var \App\Card\Card */
         $this->assertFalse($deckOfCards->draw($card));
 
         // Get deck as string
