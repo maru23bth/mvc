@@ -49,7 +49,24 @@ class CardTest extends TestCase
                 $this->assertNotEmpty($card->color);
 
                 // Test getValue()
-                if ($number === "Jack") {
+                $posibleValues = [
+                    "2" => 2,
+                    "3" => 3,
+                    "4" => 4,
+                    "5" => 5,
+                    "6" => 6,
+                    "7" => 7,
+                    "8" => 8,
+                    "9" => 9,
+                    "10" => 10,
+                    "Jack" => 11,
+                    "Queen" => 12,
+                    "King" => 13,
+                    "Ace" => 14,];
+
+                $this->assertEquals($posibleValues[$number], $card->getValue());
+                                    
+/*                 if ($number === "Jack") {
                     $this->assertEquals(11, $card->getValue());
                 }
                 if ($number === "Queen") {
@@ -65,7 +82,7 @@ class CardTest extends TestCase
                 if (is_numeric($number)) {
                     $this->assertEquals((int) $number, $card->getValue());
                 }
-
+ */
                 // Test showCard()
                 $res = $card->showCard();
                 $this->assertNotEmpty($res);
