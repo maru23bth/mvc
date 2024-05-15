@@ -117,9 +117,26 @@
     </li>
 </ul>
 
+<p>
+    Scrutinizer minskade CRAP-poäng när complexiteten minskade.<br>
+    Men det är svårt att få bort alla violations.<br>
+    Det finns en del feltolkningar av koden.<br>
+    Scrutinizer tolkar att en class alltid returnerar false medans phpunit tolkar att den returnerar en instans av en viss klass.<br>
+    Skriver jag om så den ena fungerar larmar den andra och vice versa.<br>
+</p>
+
+<p>
+    Scrutinizer kodkvalitet är nu 9.95 från tidigare 9.86.<br>
+    Kodtäckning har minskat från 30% till 27% men det är naturligt då jag har tagit minskad komplexitet så minskar antal testade rader.<br>
+</p>
+
 <h2>Diskussion</h2>
 <p>
+    Det är ett bra verktyg för att mäta kodkvalitet.<br>
+    Speciellt tyckte jag scrutinizer var bra då det gav en översikt över kodkvalitet och komplexitet.<br>
+    Samtidigt som man kan se själva koden och vilka delar som behöver förbättras.<br>
 
+    Jag ser nästan bara fördelar, även om koden fungerar så får man en tankeställare att skriva bättre kod.<br>
 </p>
 
 {% endblock %}
