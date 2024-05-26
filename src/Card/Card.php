@@ -94,6 +94,17 @@ class Card
     }
 
     /**
+     * Get the link to the svg image of the card.
+     * @return string
+     */
+    public function getSvgLink(): string
+    {
+        $number = $this->number == 10 ? 'T' : $this->number[0];
+        $suit = $this->suit[0];
+        return '../img/cards/' . $number . $suit . '.svg';
+    }
+
+    /**
      * Get the value of the card.
      * @return int
      */

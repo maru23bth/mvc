@@ -1,0 +1,49 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Index{% endblock %}
+
+{% block main %}
+    <h1>Poker Square, <small>points: {{ game.getTotalPoints() }}</small></h1>
+
+    {# read and display just one flash message type #}
+    {% for message in app.flashes('notice') %}
+    <p class="flash-notice">
+        {{ message }}
+    </p>
+    {% endfor %}
+
+    <!-- grid 5x5-->
+    <div class="grid-container">
+
+        <div class="new">
+            <div class="card">
+                {% if game.activeCard %}
+                    <img src="{{ game.activeCard.getSvgLink() }}">
+                {% endif %}
+                
+            </div>
+        </div>
+
+        {% for row in 0..4 %}
+            {% for col in 0..4 %}
+                    {% if game.cardGrid[row][col] %}
+                        <img class="card" src="{{ game.cardGrid[row][col].getSvgLink() }}">
+                    {% else %}
+                        <a href="{{ path('proj/placecard', {row: row, col: col}) }}" class="card"></a>
+                    {% endif %}
+            {% endfor %}
+            <div class="points">{{ points['row'][row] }}</div>
+        {% endfor %}
+
+        {% for row in 0..4 %}
+            <div class="points">{{ points['col'][row] }}</div>
+        {% endfor %}
+
+    </div>
+
+
+{% endblock %}
+
+{% block footer %}
+    <a href="{{ path('proj/game', {reset:true}) }}">Reset game</a>
+{% endblock %}
