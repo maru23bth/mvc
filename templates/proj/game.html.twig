@@ -41,6 +41,13 @@
 
     </div>
 
+    {% if game.gameEnded() %}
+        <dialog open>
+            <p>Gamed ended, points: {{ game.getTotalPoints() }}</p>
+            <a href="{{ path('proj/game', {reset:true}) }}">Reset game</a>
+        </dialog>
+    {% endif %}
+
 
 {% endblock %}
 
