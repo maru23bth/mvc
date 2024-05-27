@@ -3,17 +3,17 @@
 namespace App\Card;
 
 use PHPUnit\Framework\TestCase;
+use App\Card\PokerSquare;
 
 /**
  * Test cases for class Game21.
  */
 class PokerSquareTest extends TestCase
 {
-
-    private $game;
+    private PokerSquare $game;
 
     /**
-     * Construct game object 
+     * Construct game object
      */
     protected function setUp(): void
     {
@@ -196,7 +196,7 @@ class PokerSquareTest extends TestCase
         $this->game->place(2, 4);
         // Get score for Full house +5
         $this->assertEquals(50, $this->game->getTotalPoints());
-    } 
+    }
 
     /**
      * Test imposible cases

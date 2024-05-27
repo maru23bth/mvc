@@ -12,7 +12,7 @@ use App\Card\DeckOfCards;
 class PokerSquare
 {
     private DeckOfCards $deck;
-    
+
     /**
      * @var array<int, array<int, Card|null>>
      */
@@ -40,7 +40,8 @@ class PokerSquare
      * Draw a card from the deck
      * @return Card|false
      */
-    private function draw() {
+    private function draw()
+    {
         // If one card is active return it
         if ($this->activeCard) {
             return $this->activeCard;
@@ -82,7 +83,7 @@ class PokerSquare
 
         // Place the card
         $this->cardGrid[$row][$col] = $this->activeCard;
-        
+
         $this->activeCard = null;
         $this->draw(); // Draw next card
         return true;
@@ -120,7 +121,7 @@ class PokerSquare
      * Get points for the rows and columns
      * @return array<string, array<int>>
      */
-    public function getPoints(): Array
+    public function getPoints(): array
     {
         $points = ['row' => [], 'col' => []];
 
@@ -136,7 +137,7 @@ class PokerSquare
 
         // Calculate points for columns
         for ($col = 0; $col < 5; $col++) {
-            $cards = array_map(fn($row) => $this->cardGrid[$row][$col], range(0, 4));
+            $cards = array_map(fn ($row) => $this->cardGrid[$row][$col], range(0, 4));
             if (in_array(null, $cards)) {
                 $points['col'][$col] = 0;
                 continue;
@@ -150,16 +151,18 @@ class PokerSquare
 
     /**
      * Get points for the array of $cards
-     * @param array<int, Card> $cards 
-     * @return int 
+     * @param array<int, Card> $cards
+     * @return int
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     private static function handValue(array $cards): int
     {
-        $faces = array_map(fn($card) => $card->getValue(), $cards);
-        sort ($faces, SORT_NUMERIC);
+        $faces = array_map(fn ($card) => $card->getValue(), $cards);
+        sort($faces, SORT_NUMERIC);
 
-        $suits = array_map(fn($card) => $card->suit, $cards);
-        sort ($suits);
+        $suits = array_map(fn ($card) => $card->suit, $cards);
+        sort($suits);
 
         // Identify a flush
         $flush = count(array_unique($suits)) === 1;
@@ -169,7 +172,7 @@ class PokerSquare
 
         // Identify duplicates
         $duplicates = array_count_values($faces);
-        $duplicates = array_filter($duplicates, fn($value) => $value > 1);
+        $duplicates = array_filter($duplicates, fn ($value) => $value > 1);
 
         if ($flush && $straight && $faces[4] === 14) {
             return 100; // Royal flush
@@ -201,7 +204,7 @@ class PokerSquare
 
         return 0; // Default
     }
-    
+
 
 
 }

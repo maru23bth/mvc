@@ -37,7 +37,7 @@ class ControllerProj extends AbstractController
         if ($request->query->has('reset')) {
             $game = new PokerSquare();
         }
-       
+
         $session->set('game', $game);
 
         return $this->render('proj/game.html.twig', ['game' => $game, 'points' => $game->getPoints()]);

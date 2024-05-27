@@ -3,10 +3,12 @@
 namespace App\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
+
 
 class ProjTest extends WebTestCase
 {
-    private $client;
+    private KernelBrowser $client;
 
     protected function setUp(): void
     {
@@ -18,7 +20,7 @@ class ProjTest extends WebTestCase
      */
     public function testIndex(): void
     {
-        $crawler = $this->client->request('GET', '/proj/');
+        $this->client->request('GET', '/proj/');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Proj Index');
@@ -29,7 +31,7 @@ class ProjTest extends WebTestCase
      */
     public function testAbout(): void
     {
-        $crawler = $this->client->request('GET', '/proj/about');
+        $this->client->request('GET', '/proj/about');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Om projekt');
@@ -40,7 +42,7 @@ class ProjTest extends WebTestCase
      */
     public function testGame(): void
     {
-        $crawler = $this->client->request('GET', '/proj/game');
+        $this->client->request('GET', '/proj/game');
 
         $this->assertResponseIsSuccessful();
         $this->assertSelectorTextContains('h1', 'Poker Square');
