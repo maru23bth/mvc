@@ -6,14 +6,21 @@
 För att klona repot.
 
 ```
-dbwebb clone mvc
+git clone https://github.com/maru23bth/mvc
+```
+
+Installation.
+```
+composer install
+npm install
+npm run build
 ```
 
 För att komma igång med att köra webbplatsen.
 ```
-# You are in the report/ directory
 php -S localhost:8888 -t public
 ```
+
 
 
 ### Scrutinizer
