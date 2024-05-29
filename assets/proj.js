@@ -7,3 +7,4 @@
 import './styles/proj.scss';
 
 console.log('This log comes from assets/proj.js - welcome to AssetMapper! 🎉');
+

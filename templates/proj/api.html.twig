@@ -1,0 +1,125 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Api{% endblock %}
+
+{% block main %}
+<h1>Api routes</h1>
+
+<p>Sammanställning av alla JSON routes som webbplatsen erbjuder</p>
+
+<ul>
+    <li>
+        <h3>GET <a href="api/game">/proj/api/game</a></h3>
+        <p>
+            Spela ett spel av Poker Square.<br>
+            Startar ett nytt spel om inget spel är initierat.<br>
+            Returnerar en JSON struktur med kort att placera, poäng och spelplan.<br>
+            cardGrid innehåller 5x5 array med kort eller null om inget kort är placerat.<br>
+        </p>
+        <h4>Exempel svar</h4>
+        <pre><code class="language-json">
+    {
+        "game": {
+            "cardGrid": [
+                [null, null, null, null, null],
+                [null, null, null, null, null],
+                [null, null, null, null, null],
+                [null, null, null, null, null],
+                [null, null, null, null, null]
+            ],
+            "activeCard": {
+                "color": "Red",
+                "suit": "Clubs",
+                "number": "7"
+            }
+        },
+        "points": {
+            "row": [0, 0, 0, 0, 0],
+            "col": [0, 0, 0, 0, 0],
+            "total": 0
+        }
+    }
+        </code></pre>
+    </li>
+</ul>
+
+<ul>
+    <li>
+        <h3>GET <a href="api/game?reset">/proj/api/game?reset</a></h3>
+        <p>
+            Startar ett nytt spel av Poker Square.<br>
+            Returnerar en JSON struktur med kort att placera, poäng och spelplan.
+        </p>
+        <h4>Exempel svar</h4>
+        <pre><code class="language-json">
+    {
+        "game": {
+            "cardGrid": [
+                [null, null, null, null, null],
+                [null, null, null, null, null],
+                [null, null, null, null, null],
+                [null, null, null, null, null],
+                [null, null, null, null, null]
+            ],
+            "activeCard": {
+                "color": "Red",
+                "suit": "Clubs",
+                "number": "7"
+            }
+        },
+        "points": {
+            "row": [0, 0, 0, 0, 0],
+            "col": [0, 0, 0, 0, 0],
+            "total": 0
+        }
+    }
+        </code></pre>
+    </li>
+</ul>
+
+
+<ul>
+    <li>
+        <h3>POST
+            <form action="api/placecard/0/0" method="post" style="display: inline-block;">
+                <button class="link" type="submit">/proj/api/placecard/{row}/{col}</button>
+            </form>
+        </h3>
+        <p>
+            Spela ett spel av Poker Square.<br>
+            Startar ett nytt spel om inget spel är initierat.<br>
+            Returnerar en JSON struktur med kort att placera, poäng och spelplan.
+        </p>
+
+        <h4>HTTP Status svar</h4>
+        <ul>
+            <li>HTTP status 405 - Game not initiated!</li>
+            <li>HTTP status 406 - Invalid row or col!</li>
+            <li>HTTP status 200 - OK</li>
+        </ul>
+    </li>
+</ul>
+
+
+
+<script>
+/**
+ * Add highlight.js
+ */
+ const highlightJs = document.createElement('script');
+
+ highlightJs.src = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js';
+ highlightJs.onload = function() {
+     window.hljs.highlightAll();
+     console.log('Highlight.js loaded');
+ };
+ 
+ const highlightCss = document.createElement('link');
+ highlightCss.rel = 'stylesheet';
+ highlightCss.href =
+ 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css';
+ 
+ document.getElementsByTagName('head')[0].append(highlightCss, highlightJs);    
+</script>
+
+{% endblock %}

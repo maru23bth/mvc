@@ -5,7 +5,6 @@ namespace App\Tests\Controller;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
-
 class ProjTest extends WebTestCase
 {
     private KernelBrowser $client;

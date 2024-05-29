@@ -3,6 +3,15 @@
 ![Symfony logo](https://symfony.com/logos/symfony_black_02.svg)
 
 
+Mitt kurs repo för kursen Objektorienterade webbteknologier, på [Blekinge Tekniska Högskola](https://bth.se/).
+Kursen behandlar bland annat
+- Ramverk i PHP [Symfony](https://symfony.com/)
+- Objektorientering i PHP
+- Enhetstestning
+- ORM / Databas
+- Automatiserade tester med kodkvalitet
+
+
 För att klona repot.
 
 ```
