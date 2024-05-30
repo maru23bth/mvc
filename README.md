@@ -23,6 +23,7 @@ Installation.
 composer install
 npm install
 npm run build
+php bin/console doctrine:migrations:migrate
 ```
 
 För att komma igång med att köra webbplatsen.
