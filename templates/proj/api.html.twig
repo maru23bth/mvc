@@ -7,6 +7,11 @@
 
 <p>Sammanställning av alla JSON routes som webbplatsen erbjuder</p>
 
+<p>
+    Tänk på att spelet kräver en aktiv session för att fungera.<br>
+    Detta innebär att du behöver skicka med session cookie i varje request.
+</p>
+
 <ul>
     <li>
         <h3>GET <a href="api/game">/proj/api/game</a></h3>
@@ -80,15 +85,33 @@
 
 <ul>
     <li>
+        <h3>GET <a href="api/points">/proj/api/points</a></h3>
+        <p>
+            Returnerar en JSON struktur med poäng.<br>
+        </p>
+        <h4>Exempel svar</h4>
+        <pre><code class="language-json">
+    {
+        "row": [0, 0, 0, 0, 0],
+        "col": [0, 0, 0, 0, 0],
+        "total": 0
+    }
+        </code></pre>
+    </li>
+</ul>
+
+<ul>
+    <li>
         <h3>POST
             <form action="api/placecard/0/0" method="post" style="display: inline-block;">
                 <button class="link" type="submit">/proj/api/placecard/{row}/{col}</button>
             </form>
         </h3>
         <p>
-            Spela ett spel av Poker Square.<br>
-            Startar ett nytt spel om inget spel är initierat.<br>
-            Returnerar en JSON struktur med kort att placera, poäng och spelplan.
+            Placera ett kort på spelplanen.<br>
+            row och col är positionen på spelplanen där kortet ska placeras.<br>
+            row (0-4) och col (0-4) är index för rad och kolumn.<br>
+            Returnerar olika HTTP status beroende på resultatet.<br>
         </p>
 
         <h4>HTTP Status svar</h4>
@@ -101,13 +124,48 @@
 </ul>
 
 
+<ul>
+    <li>
+        <h3>GET <a href="api/high-score">/proj/api/high-score</a></h3>
+        <p>
+            High Score.<br>
+            Returnerar en JSON struktur med top 100 lista.<br>
+        </p>
+        <h4>Exempel svar</h4>
+        <pre><code class="language-json">
+    [
+        {
+            "name": "Anonymous",
+            "score": 95
+        },
+        {
+            "name": "Anonymous",
+            "score": 82
+        },
+        {
+            "name": "Anonymous",
+            "score": 73
+        },
+        {
+            "name": "Anonymous",
+            "score": 70
+        },
+        {
+            "name": "Anonymous",
+            "score": 4
+        }
+    ]
+        </code></pre>
+    </li>
+</ul>
+
+
 
 <script>
 /**
  * Add highlight.js
  */
  const highlightJs = document.createElement('script');
-
  highlightJs.src = 'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js';
  highlightJs.onload = function() {
      window.hljs.highlightAll();

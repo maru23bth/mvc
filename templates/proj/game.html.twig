@@ -42,10 +42,23 @@
     </div>
 
     {% if game.gameEnded() %}
-        <dialog open>
+        <dialog>
             <p>Gamed ended, points: {{ game.getTotalPoints() }}</p>
-            <a href="{{ path('proj/game', {reset:true}) }}">Reset game</a>
-        </dialog>
+            {% if game.getTotalPoints()>0 %}
+                <form action="{{ path('proj/high-score-post') }}" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" maxlength="50" autocomplete="off"><br>
+                    <input type="submit" value="Spara High Score">
+                    <input type="submit" name="reset" value="Reset game" formaction="{{ path('proj/game', {reset:true}) }}"> 
+                </form>
+            {% else %}
+                <a href="{{ path('proj/game', {reset:true}) }}">Reset game</a>
+            {% endif %}
+            </dialog>
+            <script>
+                var dialog = document.querySelector('dialog');
+                dialog.showModal();
+            </script>
     {% endif %}
 
 

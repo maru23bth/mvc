@@ -42,10 +42,19 @@ class ProjApiTest extends WebTestCase
      */
     public function testPlaceCardBeforeGame(): void
     {
-        $this->client->request('GET', '/proj/api/placecard/1/1');
+        $this->client->request('POST', '/proj/api/placecard/1/1');
         $this->assertResponseStatusCodeSame(405);
     }
 
+    /**
+     * Test the route for the place card page before starting game
+     */
+    public function testPointsBeforeGame(): void
+    {
+        $this->client->request('POST', '/proj/api/points');
+        $this->assertResponseStatusCodeSame(405);
+    }    
+    
     /**
      * Test the route for the game page.
      */
@@ -63,8 +72,25 @@ class ProjApiTest extends WebTestCase
         $this->client->request('POST', '/proj/api/placecard/1/1');
         $this->assertResponseStatusCodeSame(406);
 
+        // Get points
+        $this->client->request('GET', '/proj/api/points');
+        $response = $this->client->getResponse();
+        $this->assertTrue($response->headers->contains('Content-Type', 'application/json'));
+        $this->assertJson(strval($response->getContent()));
+
         // Reset game
         $this->client->request('GET', '/proj/api/game?reset');
+        $response = $this->client->getResponse();
+        $this->assertTrue($response->headers->contains('Content-Type', 'application/json'));
+        $this->assertJson(strval($response->getContent()));
+    }
+
+    /**
+     * Test High Score
+     */
+    public function testHighScore(): void
+    {
+        $this->client->request('GET', '/proj/api/high-score');
         $response = $this->client->getResponse();
         $this->assertTrue($response->headers->contains('Content-Type', 'application/json'));
         $this->assertJson(strval($response->getContent()));

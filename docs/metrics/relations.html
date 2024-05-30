@@ -49,7 +49,7 @@
 <div class="page">
     <div class="content content-first">
         <div class="report-details">
-            Created at 2024-05-29 19:11:03        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
+            Created at 2024-05-30 22:28:00        , with PHPMetrics v2.8.2 (<a href="https://twitter.com/Halleck45">Jean-François Lépine</a>).
         </div>
 
         
@@ -297,7 +297,7 @@
         "relations": []
     },
     {
-        "name": "\\App\\Repository\\BookRepository",
+        "name": "\\App\\Repository\\HighScorePointsRepository",
         "size": 3000,
         "relations": []
     },
@@ -312,6 +312,16 @@
         "relations": []
     },
     {
+        "name": "\\App\\Repository\\BookRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\App\\Repository\\HighScoreUserRepository",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Controller\\Proj\\ControllerProj",
         "size": 3000,
         "relations": [
@@ -319,7 +329,12 @@
             "\\Symfony\\Component\\HttpFoundation\\Response",
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
-            "\\App\\Card\\PokerSquare"
+            "\\App\\Card\\PokerSquare",
+            "\\App\\Repository\\HighScorePointsRepository",
+            "\\Doctrine\\Persistence\\ManagerRegistry",
+            "\\App\\Repository\\HighScoreUserRepository",
+            "\\App\\Entity\\HighScoreUser",
+            "\\App\\Entity\\HighScorePoints"
         ]
     },
     {
@@ -343,6 +358,20 @@
         "relations": []
     },
     {
+        "name": "\\App\\Entity\\HighScoreUser",
+        "size": 3000,
+        "relations": [
+            "\\Doctrine\\Common\\Collections\\ArrayCollection",
+            "\\Doctrine\\Common\\Collections\\Collection",
+            "\\App\\Entity\\HighScorePoints"
+        ]
+    },
+    {
+        "name": "\\App\\Entity\\HighScorePoints",
+        "size": 3000,
+        "relations": []
+    },
+    {
         "name": "\\App\\Controller\\Proj\\ControllerProjApi",
         "size": 3000,
         "relations": [
@@ -351,7 +380,8 @@
             "\\Symfony\\Component\\HttpFoundation\\Request",
             "\\Symfony\\Component\\HttpFoundation\\Session\\SessionInterface",
             "\\App\\Card\\PokerSquare",
-            "\\Symfony\\Component\\HttpFoundation\\JsonResponse"
+            "\\Symfony\\Component\\HttpFoundation\\JsonResponse",
+            "\\App\\Repository\\HighScorePointsRepository"
         ]
     },
     {
@@ -440,6 +470,16 @@
     },
     {
         "name": "\\App\\Dice\\Dice",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Common\\Collections\\ArrayCollection",
+        "size": 3000,
+        "relations": []
+    },
+    {
+        "name": "\\Doctrine\\Common\\Collections\\Collection",
         "size": 3000,
         "relations": []
     },

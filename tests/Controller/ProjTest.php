@@ -77,4 +77,49 @@ class ProjTest extends WebTestCase
         $this->client->request('GET', '/proj/game?reset');
         $this->assertResponseIsSuccessful();
     }
+
+    /**
+     * Test the route for the game page.
+     */
+    public function testPlayGameToEnd(): void
+    {
+        // Start game
+        $this->client->request('GET', '/proj/game');
+        $this->assertResponseIsSuccessful();
+
+        // Test the high score POST mame
+        $this->client->request('POST', '/proj/high-score-post', ['name' => 'Test']);
+        $this->assertResponseRedirects('/proj/high-score');
+
+        // Place 5x5 cards on grid
+        for ($i = 0; $i < 5; $i++) {
+            for ($j = 0; $j < 5; $j++) {
+                $this->client->request('GET', "/proj/placecard/$i/$j");
+                $this->assertResponseRedirects('/proj/game');
+            }
+        }
+
+        // Test the high score POST mame
+        $this->client->request('POST', '/proj/high-score-post', ['name' => 'Test']);
+        $this->assertResponseRedirects('/proj/high-score');
+    }
+
+    /**
+     * Test the route for the High Score page.
+     */
+    public function testHighScore(): void
+    {
+        $this->client->request('GET', '/proj/high-score');
+
+        $this->assertResponseIsSuccessful();
+        $this->assertSelectorTextContains('h1', 'High Score');
+
+        // Test the high score POST before starting game
+        $this->client->request('POST', '/proj/high-score-post');
+        $this->assertResponseRedirects('/proj/high-score');
+
+        // Test the high score POST mame
+        $this->client->request('POST', '/proj/high-score-post', ['name' => 'Test']);
+        $this->assertResponseRedirects('/proj/high-score');
+    }
 }

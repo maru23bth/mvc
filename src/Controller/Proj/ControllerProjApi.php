@@ -8,7 +8,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpKernel\Exception\HttpException;
+use Doctrine\Persistence\ManagerRegistry;
+use App\Repository\HighScorePointsRepository;
+use App\Repository\HighScoreUserRepository;
+use App\Entity\HighScoreUser;
+use App\Entity\HighScorePoints;
+
 
 use App\Card\PokerSquare;
 
@@ -45,6 +50,28 @@ class ControllerProjApi extends AbstractController
         return $response;
     }
 
+    #[Route("/proj/api/points", name: "proj/api/points")]
+    public function points(Request $request, SessionInterface $session): Response
+    {
+        /**
+         * @var \App\Card\PokerSquare $game
+         */
+        $game = $session->get('game');
+
+        if (!$game) {
+            return new Response('Game not initiated!', 405);
+        }
+
+        $data = $game->getPoints();
+        $data['total'] = $game->getTotalPoints();
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;
+    }
+
     #[Route("/proj/api/placecard/{row<[0-4]>}/{col<[0-4]>}", name: "proj/api/placecard", methods: ['POST'])]
     public function placecard(int $row, int $col, SessionInterface $session): Response
     {
@@ -66,4 +93,26 @@ class ControllerProjApi extends AbstractController
 
         return new Response(null);
     }
+
+    #[Route("/proj/api/high-score", name: "proj/api/high-score")]
+    public function highScore(HighScorePointsRepository $pointsRepository): Response
+    {
+
+        $highScores = $pointsRepository->findBy([], ['score' => 'DESC'], 100);
+        $data = [];
+        foreach ($highScores as $highScore) {
+            $data[] = [
+                //'id' => $highScore->getId(),
+                'name' => $highScore->getUser()->getName(),
+                'score' => $highScore->getScore(),
+            ];
+        }
+
+        $response = new JsonResponse($data);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+        return $response;        
+    }
+
 }

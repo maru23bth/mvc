@@ -1,0 +1,24 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}High Score{% endblock %}
+
+{% block main %}
+    <h1>High Score</h1>
+
+    {# read and display just one flash message type #}
+    {% for message in app.flashes('notice') %}
+    <p class="flash-notice">
+        {{ message }}
+    </p>
+    {% endfor %}
+
+
+    <ol>
+        {% for score in highScores %}
+            <li>{{ score.name }}: {{ score.score }}</li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}
+
+{% block footer %}Footer{% endblock %}

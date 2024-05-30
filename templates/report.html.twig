@@ -237,6 +237,33 @@
     <ol>
         <li>
             <h3>Innehåll och utseende</h3>
+            <p>
+                Mitt val för projektet blev att bygga Patiensen “Poker Square”.<br>
+                Tanken var att återanvända klasserna Card och DeckOfCards som jag byggt tidigare.<br>
+                Spelet är byggt som en separat klass med metoder för att spela spelet.<br>            
+            </p>
+            <h4>Egenskaper</h4>
+            <ul>
+                <li><b>cardGrid</b> - ett 5x5 rutnät som används för att placera kort på spelplanen.</li>
+                <li><b>deck</b> - en kortlek som används för att dra kort från.</li>
+                <li><b>activeCard</b> - det kort som dras från kortleken och ska placeras på spelplanen.</li>
+            </ul>
+
+            <h4>Publica metoder</h4>
+            <ul>
+                <li><b>placeCard</b> - placerar ett kort på spelplanen.</li>
+                <li><b>getPoints</b> - räknar ut poängen varje rad/kolumn.</li>
+                <li><b>getTotalPoints</b> - summerar poängen för hela spelplanen.</li>
+            </ul>
+
+            <h4>Metoden handValue</h4>
+            <p>
+                Denna privata metod är den mest komplexa i spelet.<br>
+                Den räknar ut poängen för en rad eller kolumn.<br>
+                Metoden tar en array med kort som parameter och returnerar poängen för denna rad eller kolumn.<br>
+                Speciellt var det svårt att få ner komplexiteten i metoden.<br>
+                Men med runt 30 kodrader och 9 if-satser känns det som att jag lyckats ganska bra.<br>
+            </p>
 
         </li>
         <li>
@@ -248,6 +275,30 @@
         </li>
         <li>
             <h3>JSON API</h3>
+        </li>
+        <li>
+            <h3>ORM</h3>
+            <p>
+                Inte implementerat i detta projekt.
+            </p>
+        </li>
+        <li>
+            <h3>Avancerade features</h3>
+            <ul>
+                <li>
+                    <h4>Metoden handValue</h4>
+                    <p>
+                        Som med ganska låg komplexitet räknar ut en poker hand.<br>
+                        Det skulle med trix kunna gå att få ner den beräknade komplexiteten ytterligare.<br>
+                        Men det skulle inte hjälpa läsbarheten av koden för en mänilg användare tror jag.<br>
+                    </p>
+                    <h4>Test av Symfony controllers</h4>
+                    <p>
+                        Jag har testat mina controllers med phpunit.<br>
+                        Med 100% kodtäckning.<br>
+                    </p>
+                </li>
+            </ul>
         </li>
     </ol>
 
