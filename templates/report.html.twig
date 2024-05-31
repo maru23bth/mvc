@@ -269,17 +269,54 @@
         <li>
             <h3>Repo och dokumentation</h3>
 
+            <h4>Scrutinizer</h4>
+            <p>
+                Jag har integrerat Scrutinizer i mitt projekt.<br>
+                Jag har fått upp min kodkvalitet till 9.75 och kodtäckning till 95%.<br>
+                Enhetstester körs på classerna Card, DeckOfCards och PokerSquare.<br>
+                Dessutom körs applikationstester på controllers och routes.<br>
+            </p>
+
+            <h4>Testning och kodtäckninge</h4>
+            <p>
+                PHPUnit rapporterar 95% kodtäckning.<br>
+                Enhetstester på klasserna för spelen har totalt 93% kodtäckning.<br>
+                Det är vissa delar som bara nås vid fel som jag inte testar.<br>
+                Applikationstester på controllers inkl. databas och routes är 100%<br>
+            </p>
+                
+
         </li>
-        <li>
+        <li style="visibility:hidden">
             <h3></h3>
         </li>
         <li>
             <h3>JSON API</h3>
+            <p>
+                Jag har implementerat en <a href="{{ path('proj/api') }}">JSON API</a> för att spela spelet.<br>
+                Man kan dra ett kort, placera det på spelplanen och se poängen.<br>
+                Och även en high score sida som visar de 100 bästa resultaten.<br>
+                Till documentationssidan använde jag highlight.js för att få snygga JSON exempel.<br>
+                Även POST routes går att klicka på.<br>
+            </p>
         </li>
         <li>
             <h3>ORM</h3>
             <p>
-                Inte implementerat i detta projekt.
+                Jag implemeterade databasen för att spara high score.<br>
+                Jag valde att spara namn och poäng i databasen.<br>
+                För att lära mig så Association Mapping så valde jag att spara namn och poäng i två olika tabeller.<br>
+                Jag tycker fortfarand här att dokumentationen är lite svår att hitta.<br>
+                Doctrine har mycket exempl och tutorials men jag saknar en bra API dokumentation.<br>
+                Men relationen är implemeterade och fungerar som det ska.<br>
+                En användare kan ha flera "high scores".<br>
+            </p>
+
+            <p>
+                Relationer började jag bygga manuellt först, men till slut blev det konsol programmet som byggde relationen.<br>
+                Jag använder SQLite som databas.<br>
+                Jag har inte gjort enhetstester mot databasen men applikationstester som också läser och skriver till databasen.<br>
+                Dessa fungerar även i Scrutinizer eftersom jag implementerat att Scrutinizer skapar databserna i samband med composer install.<br>
             </p>
         </li>
         <li>
@@ -290,12 +327,27 @@
                     <p>
                         Som med ganska låg komplexitet räknar ut en poker hand.<br>
                         Det skulle med trix kunna gå att få ner den beräknade komplexiteten ytterligare.<br>
-                        Men det skulle inte hjälpa läsbarheten av koden för en mänilg användare tror jag.<br>
+                        Men jag tycker inte det skulle hjälpa läsbarheten av koden för en mänsklig användare.<br>
                     </p>
+                </li>
+                <li>
                     <h4>Test av Symfony controllers</h4>
                     <p>
                         Jag har testat mina controllers med phpunit.<br>
                         Med 100% kodtäckning.<br>
+                    </p>
+                </li>
+                <li>
+                    <h4>Relationer i ORM</h4>
+                    <p>
+                        Även om databasen är liten så är relationer implemeterade.<br>
+                    </p>
+                </li>
+                <li>
+                    <h4>Applikationstester inkluderar databasen</h4>
+                    <p>
+                        Applikationstesterna som testar controllers inkluderar även läs/skriv av databasen.<br>
+                        Och dessa fungerar även på Scrutinizer.<br>
                     </p>
                 </li>
             </ul>
@@ -305,9 +357,28 @@
     <ul>
         <li>
             <h3>Hur projektet gick att genomföra</h3>
+            <p>
+                Om jag ska vara ärligt, så gick det lite segt...<br>
+                Det börjar bli sommar, jag har pluggat första gången på 20 år, det ska helt enkelt bli skönt med lite ledigt.<br>
+                Mest tid gick åt till småfix t.ex. att få Scrutinizer att fungera.<br>
+                Det kanske bara är jag men jag tycker inte jag hittade dokumention på det sätt jag önskade för Scrutinizer och Doctrine<br>
+                Symfony var bättre, men jag tycker jag saknar en bra översikt.<br>
+            </p>
         </li>
         <li>
             <h3>Tankar om kursen</h3>
+            <p>
+                Jag tycker att kursen varit bra, jag har lärt mig mycket och det har varit roligt.<br>
+                Jag tycker att det varit bra att vi fått jobba med ett ramverk som Symfony.<br>
+                Det har varit en bra introduktion till objektorienterad programmering och MVC i php.<br>
+                Jag tycker att det varit bra att vi fått jobba med enhetstester och kodkvalitet.<br>
+                Det är viktiga delar som jag inte jobbat med tidigare.<br>
+                Och än en gång bli bättre på att typa och strukturera min PHP kod.<br>
+            </p>
+            <p>
+                Jag kanske hellre hade sett att vi jobbat med Laravel som ramverk.<br>
+                Det verkar vara det ledande ramverket i php och det hade varit bra att lära sig det.<br>
+            </p>
         </li>
     </ul>
 </article>

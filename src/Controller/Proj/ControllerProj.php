@@ -30,6 +30,12 @@ class ControllerProj extends AbstractController
         return $this->render('proj/about.html.twig');
     }
 
+    #[Route("/proj/about/database", name: "proj/about/database")]
+    public function aboutDB(): Response
+    {
+        return $this->render('proj/aboutDatabase.html.twig');
+    }
+
     #[Route("/proj/game", name: "proj/game")]
     public function game(Request $request, SessionInterface $session): Response
     {

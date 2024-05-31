@@ -1,0 +1,63 @@
+{% extends "proj/base.html.twig" %}
+
+{% block title %}Om ORM i projektet{% endblock %}
+
+{% block main %}
+    <h1>Om ORM i projektet</h1>
+
+
+    <img class="card" src="{{ asset('img/ER.png') }}"><br>
+
+    <ul>
+        <li>
+            <b>high_score_user</b>
+            Sparar användarens namn.
+        </li>
+        <li>
+            <b>high_score_points</b>
+            Sparar användarens poäng.
+        </li>
+    </ul>
+
+    <p>
+        Jag implemeterade databasen för att spara high score.<br>
+        Jag valde att spara namn och poäng i databasen.<br>
+        För att lära mig så Association Mapping så valde jag att spara namn och poäng i två olika tabeller.<br>
+        Jag tycker fortfarand här att dokumentationen är lite svår att hitta.<br>
+        Doctrine har mycket exempl och tutorials men jag saknar en bra API dokumentation.<br>
+        Men relationen är implemeterade och fungerar som det ska.<br>
+        En användare kan ha flera "high scores".<br>
+    </p>
+
+    <p>
+        Relationer började jag bygga manuellt först, men till slut blev det konsol programmet som byggde relationen.<br>
+        Jag använder SQLite som databas.<br>
+    </p>
+    
+    <p>
+        Jag har inte gjort enhetstester mot databasen men applikationstester som också läser och skriver till databasen.<br>
+        Dessa fungerar även i Scrutinizer eftersom jag implementerat att Scrutinizer skapar databserna i samband med composer install.<br>
+    </p>
+
+    <h4>Fördelar, nackdelar, likheter och skillnader med ORM</h4>
+    <p>
+        Jag har inte jobbat med ORM tidigare även om jag kännt till konceptet.<br>
+        Det är ovant och högre tröskel att komma igång tycker jag.<br>
+        Lite läskigt att inte direkt se vad som uppdateras i databasen.<br>
+        Det kan också vara svårare att optimera frågor när man inte på samma sätt direkt ser frågan mot databasen.<br>
+    </p>
+    <p>
+        Fördelarna är många när man får objekt att jobba mot, det är väldigt naturligt att uppdatera entity objekten.<br>
+        Och relationer kan säkert också bli mer naturliga att jobba med.<br>
+        Jag ser att det kan vara en stor fördel att slippa skriva SQL frågor.<br>
+        Och får man dessutom ett grafiskt gränssnitt för att jobba med objekten så kan det vara en stor fördel.<br>
+    </p>
+    <p>
+        I grunden är det förståss samma databas bakom och vad jag kan se i dokumentationen så kan man även skriva SQL.<br>
+        Även om jag då tycker funktionen lite försvinner.<br>
+    </p>
+
+
+{% endblock %}
+
+{% block footer %}Footer{% endblock %}
