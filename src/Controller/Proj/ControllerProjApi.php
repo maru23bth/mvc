@@ -51,10 +51,10 @@ class ControllerProjApi extends AbstractController
     }
 
     #[Route("/proj/api/points", name: "proj/api/points")]
-    public function points(Request $request, SessionInterface $session): Response
+    public function points(SessionInterface $session): Response
     {
         /**
-         * @var \App\Card\PokerSquare $game
+         * @var \App\Card\PokerSquare|null $game
          */
         $game = $session->get('game');
 
@@ -100,10 +100,14 @@ class ControllerProjApi extends AbstractController
 
         $highScores = $pointsRepository->findBy([], ['score' => 'DESC'], 100);
         $data = [];
+        
         foreach ($highScores as $highScore) {
+            /** @var HighScoreUser $user */
+            $user = $highScore->getUser();
             $data[] = [
                 //'id' => $highScore->getId(),
-                'name' => $highScore->getUser()->getName(),
+                
+                'name' => $user->getName(),
                 'score' => $highScore->getScore(),
             ];
         }
@@ -112,7 +116,7 @@ class ControllerProjApi extends AbstractController
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
         );
-        return $response;        
+        return $response;
     }
 
 }

@@ -79,21 +79,24 @@ class ControllerProj extends AbstractController
         $highScores = $pointsRepository->findBy([], ['score' => 'DESC'], 100);
         $data = [];
         foreach ($highScores as $highScore) {
+            /** @var HighScoreUser $user */
+            $user = $highScore->getUser();
+
             $data[] = [
                 //'id' => $highScore->getId(),
-                'name' => $highScore->getUser()->getName(),
+                'name' => $user->getName(),
                 'score' => $highScore->getScore(),
             ];
         }
 
-        return $this->render('proj/high-score.html.twig', ['highScores' => $data]);  
+        return $this->render('proj/high-score.html.twig', ['highScores' => $data]);
     }
 
     /**
      * Save new high score entry
      */
     #[Route("/proj/high-score-post", name: "proj/high-score-post", methods: ['POST'])]
-     public function highScorePost(Request $request, SessionInterface $session, ManagerRegistry $doctrine, HighScoreUserRepository $userRepository, HighScorePointsRepository $pointsRepository): Response
+    public function highScorePost(Request $request, SessionInterface $session, ManagerRegistry $doctrine, HighScoreUserRepository $userRepository): Response
     {
 
         // Get posted name
@@ -114,7 +117,7 @@ class ControllerProj extends AbstractController
             $this->addFlash('notice', 'No points to save!');
             return $this->redirectToRoute('proj/high-score');
         }
-        
+
 
         $entityManager = $doctrine->getManager();
 
@@ -122,7 +125,7 @@ class ControllerProj extends AbstractController
         $user = $userRepository->findOneBy(['name' => $name]);
         if (!$user) {
             $user = new HighScoreUser();
-            $user->setName($name);
+            $user->setName(strval($name));
         }
 
         // Save high score

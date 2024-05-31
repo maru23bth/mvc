@@ -53,8 +53,8 @@ class ProjApiTest extends WebTestCase
     {
         $this->client->request('POST', '/proj/api/points');
         $this->assertResponseStatusCodeSame(405);
-    }    
-    
+    }
+
     /**
      * Test the route for the game page.
      */
